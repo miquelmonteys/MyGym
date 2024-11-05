@@ -1,0 +1,3309 @@
+// -- VARIABLE DEFINITION BELOW ----------------------
+
+
+//background-color: var(--1);
+
+:root {
+  // RRS HA Long Lasting
+  --1: #BE4E50;
+  // Skin Tech
+  --2: #0081C6;
+  // RRS
+  --3: #8B7866;
+  // XL Hair
+  --4: #97945C;
+  // HAPPY intim
+  --5: #E54360;
+  // Benebellum
+  --6: #FFCD00;
+  // Reparestim
+  --7: #BABABA;
+  // Peel2Glow
+  --8: #5D3A5E;
+  // Aesthetic Dermal
+  --9: #FF5100;
+  // STPG
+  --10: #323E48;
+  // Sagoni Melt
+  --11: #8A7459;
+  // Intermissum no color!
+  --12: #D0B787;
+  // Siantra no color!
+  --13: #9B9B9B;
+  // AD Daily Care
+  --14: #FF5100;
+}
+
+
+// --------------------- END OF VARIABLE DEFINITION --
+
+// Shell will always occupy as much space as it can
+app-shell{
+  width: 100% !important;
+}
+
+// ------------------------------------------------------------
+// --------------------- UNIVERSAL STYLES ---------------------
+// ------------------------------------------------------------
+
+h1 {
+  color: var(--m-3-sys-light-primary, #323E48);
+  /* M3/headline/medium */
+  font-family: Inter;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 36px;
+  /* 128.571% */
+}
+
+.showTabs > .mat-mdc-tab-group-dynamic-height .mat-mdc-tab-body-content {
+  /* overflow: hidden; */
+  overflow: visible !important;
+}
+
+
+// ------------------------------------------------------------
+// -------------------------- CHIPS ---------------------------
+// ------------------------------------------------------------
+// Styles of chips.
+// Mostly used as BUTTONS for Brand info redirections.
+
+.assistiveChip {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: 80%;
+  border-radius: 8px;
+  background: #DBF4F5;
+  cursor: pointer;
+}
+
+// on chip hover, change colour to show it's clickable
+.assistiveChip:hover {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: 80%;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+
+.insideChip {
+  display: flex;
+  height: 32px;
+  padding: 3px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  color: #1D1B20;
+  text-align: center;
+
+  /* M3/label/large */
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+
+}
+
+// -----------------------------------------------------------------------
+// -------------------------- END OF CHIP CODE ---------------------------
+// -----------------------------------------------------------------------
+
+
+// ----------------------------------------------------------------
+// --------------------- SLIDE TOGGLE STYLING ---------------------
+// ----------------------------------------------------------------
+
+// Main trackbar and ball styling.
+.mat-mdc-slide-toggle .mdc-switch {
+  border-radius: 100px !important;
+  height: 32px !important;
+  width: 52px !important;
+}
+
+// Trackbar style for when the button is disabled
+.mat-mdc-slide-toggle .mdc-switch:enabled .mdc-switch__track::before {
+  width: 52px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 100px;
+  border: 2px solid #79747E;
+  background-color: #E6E0E9 !important;
+}
+
+// Trackbar style for when the button is enabled
+.mat-mdc-slide-toggle .mdc-switch:enabled .mdc-switch__track::after {
+  width: 52px !important;
+  height: 32px !important;
+  flex-shrink: 0 !important;
+  border-radius: 100px !important;
+  background: #323E48 !important;
+}
+
+// Defining the trackbar path length. The ball is going to change size,
+// so it will not be translateX(100%) as the default styling.
+.mdc-switch--selected .mdc-switch__handle-track {
+  transform: translateX(70%) !important;
+}
+
+// Trackbar style for the ball toggle when the button is disabled.
+// ball changes its size so it is going to have different margins
+// compared to when it is active
+.mat-mdc-slide-toggle .mdc-switch.mdc-switch--unselected:enabled .mdc-switch__handle::after {
+  height: 16px !important;
+  width: 16px !important;
+  background: #79747E !important;
+  margin: 2px 7px !important;
+}
+
+// Trackbar style for the ball toggle when the button is disabled,
+// but being clicked to activate it.
+.mat-mdc-slide-toggle .mdc-switch.mdc-switch--unselected:active .mdc-switch__handle::after {
+  height: 28px !important;
+  width: 28px !important;
+  // ball becomes bigger on click
+  transform: scale(0.85) !important;
+  transition: all 0.15s ease;
+  border-radius: 200px !important;
+  background: #79747E !important;
+  margin: -4px 2px !important;
+}
+
+// Trackbar style for the ball toggle when the button is enabled.
+// Ball is now bigger.
+.mat-mdc-slide-toggle .mdc-switch.mdc-switch--selected:enabled .mdc-switch__handle::after {
+  height: 24px !important;
+  width: 24px !important;
+  border-radius: 200px !important;
+  background: white !important;
+  margin: -2px 2px !important;
+}
+
+// Trackbar style for the ball toggle when the button is enabled,
+// but being clicked to deactivate it.
+.mat-mdc-slide-toggle .mdc-switch.mdc-switch--selected:active .mdc-switch__handle::after {
+  height: 28px !important;
+  width: 28px !important;
+  // ball becomes bigger on click
+  transform: scale(1) !important;
+  transition: all 0.15s ease;
+  border-radius: 200px !important;
+  background: white !important;
+  margin: -4px 0px !important;
+}
+
+// Ripple effect positioning is a bit different
+// as we have different ball sizes and margins.
+.mdc-switch__ripple {
+  position: absolute !important;
+  transform: translate(-20%, -50%) !important;
+  z-index: -1;
+}
+
+
+// necessary so the ripple effect is correctly placed.
+.mat-mdc-slide-toggle .mdc-switch .mdc-switch__handle {
+  width: 0px !important;
+}
+
+// this styling lets us have the ball correctly placed
+.mat-mdc-slide-toggle .mdc-switch .mdc-switch__track {
+  /* border-radius: var(--mdc-switch-track-shape, 7px); */
+  height: inherit !important;
+  border-radius: inherit !important;
+}
+
+// hide icon styling
+.mat-mdc-slide-toggle .mdc-switch .mdc-switch__handle::before {
+  display: none !important;
+  /* background: var(--mdc-switch-handle-surface-color, var(--mdc-theme-surface, #fff)); */
+}
+
+// hide borders on quantityInput cells on Marketing order, but keep every other mdc-text-field--outlined properties.
+.quantityInput {
+  width: 100%;
+
+  .mdc-text-field--outlined .mdc-notched-outline {
+    display: none !important;
+    color: transparent !important;
+  }
+}
+
+
+.mat-mdc-slide-toggle .mdc-switch:hover .mdc-switch__ripple::after {
+  // opacity : .04; // by default
+  // transition: opacity 75ms 0ms cubic-bezier(0, 0, 0.2, 1); // by default
+  // only changing ripple hover/click color
+  background-color: #323E48 !important;
+}
+
+// hide the shadow effect. ball is  simple
+.mat-mdc-slide-toggle .mdc-switch:enabled .mdc-switch__shadow {
+  display: none !important;
+}
+
+// hide the icons for when enabling/disabling
+// (checked/forbidden icons)
+.mat-mdc-slide-toggle .mdc-switch:enabled .mdc-switch__icons {
+  display: none !important;
+}
+
+
+// -----------------------------------------------------------------------
+// --------------------- END OF SLIDE TOGGLE STYLING ---------------------
+// -----------------------------------------------------------------------
+
+//************************************************************************
+//************************************************************************
+//************************************************************************
+//************************************************************************
+//************************************************************************
+//************************************************************************
+//************************************************************************
+//************************************************************************
+//************************************************************************
+//************************************************************************
+//************************************************************************
+
+// ----------------------------------------------------------------------
+// ---------------------- MULTI-PURPOSE CONTAINERS ----------------------
+// ----------------------------------------------------------------------
+
+.mainDiv {
+  flex-shrink: 0;
+  border-radius: 18px;
+  // background: var(--m-3-white, #FFF);
+  padding: 20px;
+}
+
+
+.mainFlex {
+  height: -webkit-fill-available;
+  margin: 16px;
+  display: flex;
+}
+
+
+.mainFlex2 {
+  display: flex;
+  width: 100%;
+  //background-color: white;
+  border-radius: 18px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+// basic flex container.
+.flexContainer {
+  display: flex;
+  // height: 100%;
+  height: calc(100vh - 98px);
+  //width: 100%;
+  width: calc(100% - 16px);
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.flexContainerMobile {
+  display: flex;
+  margin-top: 127px;
+  margin-left: 15px;
+  height: calc(100vh - 150px);
+  width: calc(100vw - 30px);
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+
+.noOverflow {
+
+  height: inherit;
+  overflow: hidden !important;
+}
+
+.basicContainer {
+  height: 100%;
+  max-height: calc(100vh - 98px);
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.noMax {
+  max-height: none;
+}
+
+// -----------------------------------------------------------------------
+// ---------------------------- HOME STYLING -----------------------------
+// -----------------------------------------------------------------------
+
+// style for title section containers of Home
+.titleSectionContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+
+.titleSection {
+  color: var(--m-3-sys-light-primary, #323E48);
+  /* M3/title/medium */
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  /* 150% */
+}
+
+.bigMainBlockTransparent {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.bigMainBlock {
+  display: block;
+  width: 100%;
+  min-height: calc(100vh - 138px);
+  height: auto !important;
+  background-color: white; // should be different in recents
+  border-radius: 18px;
+  padding: 20px;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.bigMainBlock {
+  display: block;
+  width: 100%;
+  min-height: calc(100vh - 138px);
+  height: auto !important;
+  background-color: white; // should be different in recents
+  border-radius: 18px;
+  padding: 20px;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.bigMainBlockMobile {
+  display: block;
+  width: 100%;
+  min-height: calc(100vh - 197px);
+  height: auto !important;
+  background-color: white;
+  border-radius: 18px;
+  padding: 20px;
+  gap: 16px;
+}
+
+.homeStyle {
+  // document list is going to have this styling
+  // in case it's the Recents component in
+  // the homepage. No additional
+  // styling other than having transparent color.
+  background-color: transparent !important;
+}
+
+.bigMainBlockSupport {
+  display: block;
+  width: 100%;
+  height: auto;
+
+}
+
+.mainBlock {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  //padding-top: 10px;
+
+  padding-bottom: 10px;
+
+}
+
+.innerOrdersGap {
+  padding: 10px 0px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+.ordersOverflow {
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  gap: 15px;
+  align-self: stretch;
+
+  border-radius: 16px;
+  background: var(--M3-ref-secondary-secondary99, #ECF9FA);
+}
+
+.ordersOverflowNoColor {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  padding: 40px 0;
+  height: calc(100% - 99px);
+}
+
+.ordersContainerNoColor {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  align-self: stretch;
+  overflow: scroll;
+}
+
+.basicOverflow {
+  overflow-y: auto;
+  height: 100%;
+
+}
+
+// default overflow container.
+.overflowContainer {
+  overflow: auto;
+  height: 100%;
+}
+
+.actionIcons {
+  height: 20px;
+  width: 20px;
+  font-size: 20px;
+  color: #323E48;
+}
+
+//.active {
+//  background-color: pink;
+//}
+
+.mat-expansion-panel-body {
+  padding: 0 !important;
+}
+
+.mat-mdc-paginator-container {
+  display: flex;
+  //width: calc(100vw - 320px) !important;
+  //min-height: var(--mat-paginator-container-size);
+  background: white;
+  position: absolute;
+  bottom: 0;
+  width: auto !important;
+}
+
+
+.smallHeadline {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: stretch;
+  color: var(--m-3-sys-light-on-surface, #1D1B20);
+  //color:inherit;
+
+  /* M3/label/medium */
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+// -----------------------------------------------------------------------
+// ---------------------------- FORM STYLING -----------------------------
+// -----------------------------------------------------------------------
+
+// by default, every form field is going to occupy as much width as possible.
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+.notW100 {
+  .mat-mdc-form-field {
+    width: auto !important;
+  }
+}
+
+// Forcing all of our forms to have width 100%. Its container will
+// already control the width.
+form {
+  width: 100%;
+}
+
+// -----------------------------------------------------------------------
+// ---------------------------- PROFILE STYLING --------------------------
+// -----------------------------------------------------------------------
+.profileSection {
+
+  display: flex;
+  //width: 600px;
+  height: 100%;
+  width: 100%;
+  padding: 40px 0px 80px 0px;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: scroll;
+  //gap: 40px !important;
+  gap: 20px !important;
+}
+
+.profileMatTab .mat-mdc-tab-body-wrapper {
+  height: calc(100% - 48px) !important;
+}
+
+// --------------------------------------------------------------
+// ------------------ GLOBAL SCROLLBAR STYLING ------------------
+// --------------------------------------------------------------
+// Styling for the scrollbar shown thorough every component.
+
+// very thin scrollbar  with a height of 100px
+::-webkit-scrollbar {
+  width: 7.5px;
+  height: 7.5px;
+}
+
+// the track is transparent when not on hover
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+// on hover, show the track
+::-webkit-scrollbar-track:hover {
+  background: rgba(0, 45, 68, .1);
+  border-radius: 10px;
+}
+
+// styling of the thumb of the scrollbar.
+// initially hidden as it is only shown
+// when the element that it's scrolling
+// is hovered (see below)
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(36, 65, 84, 0.5);
+  visibility: hidden;
+}
+
+// when hovering the scrollable element,
+// show the scrollbar.
+:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+// components in which the scrollbar is always invisible
+app-profile-settings,
+app-user-settings,
+.ordersOverflowNoColor,
+app-filter-dialog,
+user-settings-dialog,
+distributor-settings-dialog,
+app-brandFilesCards {
+  :hover::-webkit-scrollbar-thumb {
+    visibility: hidden !important;
+  }
+
+  ::-webkit-scrollbar-track:hover {
+    background: transparent;
+  }
+}
+
+
+.mdc-list-item__primary-text {
+  width: 100% !important;
+}
+
+.fakeMenu {
+  display: none !important;
+}
+
+
+.logo {
+  width: 40px;
+  height: 42.623px;
+}
+
+// ---------------------------------------------------------------
+// ------------------ CUSTOM INPUT FORMAT STYLE ------------------
+// ---------------------------------------------------------------
+// Mostly for dialogs that contain a form with lots of inputs.
+// There are two main elements, inputsSection and buttonsSection.
+
+.search-bar {
+  width: 100%;
+
+  .mat-mdc-form-field-infix{
+    padding: 0 !important;
+  }
+  .mdc-text-field--outlined .mdc-notched-outline__trailing {
+    z-index: 1;
+    border-style: hidden !important;
+    color: transparent !important;
+  }
+
+  .mdc-notched-outline{
+    border-style: hidden !important;
+    border-color: transparent !important;
+  }
+
+  .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__leading{
+    border-color: transparent !important;
+  }
+
+}
+
+.searchInputTitle {
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  color: var(--m-3-sys-light-primary, #323E48);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  width: 100% !important;
+  justify-content: center !important;
+}
+
+// inputsSection only has the form inside.
+.inputsSection {
+  gap: 10px;
+  display: flex;
+  width: 516px !important;
+  flex-direction: column;
+  align-items: flex-start;
+  // this gap was mandated by figma but the form makes it useless.
+  /*gap: 24px; */
+}
+
+// inputAdvanced1 only contains inputAdvanced2
+.inputAdvanced1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  padding-bottom: 24px;
+}
+
+.inputAdvanced1images {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+}
+
+// Container of the title of the input, and the input itself
+.inputAdvanced2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  /* padding-top: 10px;*/
+}
+
+// only contains the explanatory text of the input
+.inputText {
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  color: var(--m-3-sys-light-primary, #323E48);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.transparentInput {
+  width: 100%;
+
+  .mdc-text-field--outlined .mdc-notched-outline {
+    z-index: 1;
+    color: transparent;
+  }
+
+  .mat-mdc-form-field-infix {
+    flex: auto;
+    min-width: 0;
+    width: 100% !important;
+    position: relative;
+    box-sizing: border-box;
+
+  }
+
+}
+
+// only contains mat-form-field
+.inputField {
+  display: flex;
+  height: 56px !important;
+  margin: auto;
+  align-items: unset;
+  align-self: stretch;
+  width: calc(100% - 16px) !important;
+  justify-content: center !important;
+  align-content: center !important;
+  padding: 0px 0px 0px 16px !important;
+}
+
+.buttonsSection {
+  padding-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+//.hidePlaceholder{
+//  :focus::placeholder{
+//    color:transparent !important;
+//  }
+//}
+
+
+// -----------------------------------------------------------------------
+// ---------------------------- CUSTOM MAT STYLING -----------------------
+// -----------------------------------------------------------------------
+
+// Toolbar background colour should be transparent
+.mat-toolbar{
+  background: transparent !important;
+  padding: 6px 30px;
+  overflow: hidden;
+  width: 100vw !important;
+  transition-duration: 0.15s;
+}
+
+.mat-toolbar-mobile{
+  padding: 12px 20px !important;
+  transition-duration: 0.15s;
+}
+
+.mat-toolbar-row{
+
+  padding: 0px !important;
+}
+
+.mat-toolbar-multiple-rows{
+  min-height: unset !important;
+}
+
+.header-align-right {
+  display: flex;
+  padding: 21px 0;
+  justify-content: flex-end;
+}
+
+.mat-grid-tile-content {
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+}
+
+.colourBackgroudtr {
+  background: #e2e5f4 !important;
+}
+
+.header-cell {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.mat-mdc-progress-spinner .mdc-circular-progress__determinate-circle,
+.mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+  stroke: #84DADE !important;
+  margin: auto auto !important;
+}
+
+.loadingContainer {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 90px;
+  //height:  100% !important;
+  height: calc(100vh - 200px);
+
+}
+
+
+.mat-mdc-form-field-hint-wrapper,
+.mat-mdc-form-field-error-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  // No padding so it is shown on the very left
+  padding: 0px !important;
+}
+
+.mat-mdc-form-field-error {
+  color: #d50000;
+  font-size: 11px;
+}
+
+.mdc-text-field__input:invalid {
+}
+
+.biggerMenu {
+  .mat-mdc-menu-panel {
+    min-width: 412px;
+    max-width: 515px;
+    overflow: visible;
+    box-sizing: border-box;
+    outline: 0;
+    border-radius: var(--mat-menu-container-shape);
+    background-color: var(--mat-menu-container-color);
+  }
+}
+
+
+.mdc-dialog__actions {
+  height: fit-content;
+  display: flex;
+  position: relative;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  /* min-height: 52px; /
+  margin: 0;
+  / padding: 8px; */
+  border-top: 1px solid rgba(0, 0, 0, 0);
+}
+
+.custom-container-createuser {
+  .mdc-dialog__surface {
+    display: inline-flex !important;
+    padding: 40px !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    gap: 40px !important;
+    border-radius: 20px !important;
+    background: var(--m-3-white, #FFF) !important;
+
+    /* Shadow_Cards_Hover */
+    box-shadow: 0px 0px 1px 0px rgba(66, 71, 76, 0.25), 0px 4px 8px 0px rgba(10, 11, 30, 0.06), 0px 8px 48px 0px rgba(10, 11, 30, 0.08) !important;
+  }
+}
+
+.singleLine {
+  display: inline-block;
+
+  color: var(--M3-sys-light-primary, #323E48);
+  text-align: right;
+
+  /* M3/label/medium */
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px; /* 133.333% */
+
+}
+
+.custom-container-changeprofile {
+  .mdc-dialog .mdc-dialog__content {
+    padding: 0px;
+  }
+
+  .mdc-dialog__surface {
+    display: inline-flex !important;
+    padding: 40px !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    gap: 40px !important;
+    border-radius: 20px !important;
+    background: var(--m-3-white, #FFF) !important;
+
+    /* Shadow_Cards_Hover */
+    box-shadow: 0px 0px 1px 0px rgba(66, 71, 76, 0.25), 0px 4px 8px 0px rgba(10, 11, 30, 0.06), 0px 8px 48px 0px rgba(10, 11, 30, 0.08) !important;
+  }
+}
+
+.custom-container-changepassword {
+
+  .mdc-dialog__surface {
+    display: inline-flex !important;
+    padding: 40px !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    gap: 40px !important;
+
+    border-radius: 20px !important;
+    background: var(--m-3-white, #FFF) !important;
+
+    /* Shadow_Cards_Hover */
+    box-shadow: 0px 0px 1px 0px rgba(66, 71, 76, 0.25), 0px 4px 8px 0px rgba(10, 11, 30, 0.06), 0px 8px 48px 0px rgba(10, 11, 30, 0.08) !important;
+  }
+}
+
+// style for the default dialog container
+.custom-container-default {
+
+  .mdc-dialog .mdc-dialog__content {
+
+    padding: 0 !important;
+  }
+
+  .mdc-dialog__surface {
+    max-height: 80vh !important;
+    display: inline-flex !important;
+
+
+    padding: 40px !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    gap: 40px !important;
+
+    border-radius: 20px !important;
+    //background: var(--m-3-white, #FFF) !important;
+
+    /* Shadow_Cards_Hover */
+    box-shadow: 0px 0px 1px 0px rgba(66, 71, 76, 0.25), 0px 4px 8px 0px rgba(10, 11, 30, 0.06), 0px 8px 48px 0px rgba(10, 11, 30, 0.08) !important;
+  }
+}
+
+.custom-container-no-overflow {
+  .mdc-dialog__surface {
+    max-height: 80vh !important;
+    display: inline-flex !important;
+    overflow: hidden !important;
+
+    padding: 40px !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    gap: 40px !important;
+
+    border-radius: 20px !important;
+    //background: var(--m-3-white, #FFF) !important;
+
+    /* Shadow_Cards_Hover */
+    box-shadow: 0px 0px 1px 0px rgba(66, 71, 76, 0.25), 0px 4px 8px 0px rgba(10, 11, 30, 0.06), 0px 8px 48px 0px rgba(10, 11, 30, 0.08) !important;
+  }
+}
+
+
+// custom container for the dialog that has a sticky header
+.custom-container-sticky {
+  .mdc-dialog__surface {
+    display: inline-flex !important;
+    padding: 40px !important;
+    padding-top: 68px !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    gap: 40px !important;
+
+    border-radius: 20px !important;
+    background: var(--m-3-white, #FFF) !important;
+
+    /* Shadow_Cards_Hover */
+    box-shadow: 0px 0px 1px 0px rgba(66, 71, 76, 0.25), 0px 4px 8px 0px rgba(10, 11, 30, 0.06), 0px 8px 48px 0px rgba(10, 11, 30, 0.08) !important;
+  }
+}
+
+// previous style goes with this sticky header:
+.stickyHeaderDialog {
+  padding: 10px;
+  position: absolute;
+  width: calc(100% - 20px);
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+
+// Always show overflow on select *buttons*
+.mat-mdc-select-value {
+  overflow: visible !important;
+}
+
+.datePickerAdvanced {
+  .mat-date-range-input-container {
+    margin-top: 15px;
+  }
+}
+
+.datePicker {
+  width: 100%;
+
+  // default formatting for datepickers (ranged so far)
+  .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
+    height: auto;
+
+    width: 100%;
+  }
+
+  .mat-mdc-button-touch-target {
+    height: 20px !important;
+    width: 20px !important;
+  }
+
+  .mat-mdc-icon-button {
+    padding: 0 !important;
+    padding-right: 20px !important;
+    height: 20px;
+    width: 20px;
+    font-size: 20px;
+  }
+
+  .mat-mdc-form-field-icon-suffix,
+  .mat-mdc-form-field-icon-prefix {
+    padding: 0 10px 0px 0px;
+  }
+
+
+  //.mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper {
+  //  border: solid 1px #79747E !important;
+  //}
+
+
+}
+
+
+.datePickerChosen {
+  width: 100%;
+  display: flex;
+  margin: 0 auto;
+  border-radius: 8px !important;
+  background-color: #CEF0F2 !important;
+  //padding-left: 8px;
+
+  form {
+    // a datepicker is a mini-form. We want no gaps.
+    gap: 0px !important;
+  }
+
+  .mdc-text-field--outlined {
+    padding-left: 8px !important;
+  }
+
+  .mat-mdc-form-field {
+    // This option allows the textboxes chipContainer to be centered inside of the outer div
+    flex-direction: unset !important;
+  }
+
+
+  // default formatting for datepickers (ranged so far)
+  //.mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
+  //  height: auto;
+  //  width: 100%;
+  //  color: #325354;
+  //}
+
+  .mat-mdc-button-touch-target {
+    height: 20px !important;
+    width: 20px !important;
+  }
+
+  .mat-mdc-icon-button {
+    padding: 0 !important;
+    padding-right: 20px !important;
+    height: 20px;
+    width: 20px;
+    font-size: 20px;
+    color: #325354;
+
+  }
+
+  .mat-mdc-form-field-icon-suffix,
+  .mat-mdc-form-field-icon-prefix {
+    padding: 0 10px 0px 0px;
+  }
+}
+
+.pfpImage {
+  width: 50px;
+  height: 50px;
+
+
+  background: var(--m-3-ref-secondary-secondary-40, #84DADE);
+}
+
+
+.noImage {
+  width: 50px;
+  height: 50px;
+  background: var(--m-3-ref-secondary-secondary-40, #84DADE);
+
+  color: var(--m-3-sys-light-primary, #323E48);
+  text-align: center;
+
+  /* M3/headline/medium */
+  font-family: Inter;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  //line-height: 36px; /* 128.571% */
+  line-height: 50px;
+  /* 128.571% */
+
+  // Prevent selection
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.noImageFake {
+  width: 50px;
+  height: 50px;
+  background: #DBF4F5;
+
+  color: var(--m-3-sys-light-primary, #323E48);
+  text-align: center;
+
+  /* M3/headline/medium */
+  font-family: Inter;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  //line-height: 36px; /* 128.571% */
+  line-height: 50px;
+  /* 128.571% */
+}
+
+.mat-mdc-input-element{
+
+}
+
+.mdc-text-field--outlined .mdc-notched-outline {
+  //color: transparent !important;
+  color: transparent;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #79747E;
+  .mat-mdc-form-field-input-control{
+    padding: 10px !important;
+  }
+}
+
+// Styling for the chip containers of every filtering option
+// used in top-document-list (so far)
+
+
+.chipContainer {
+  width: auto !important;
+
+  .mat-mdc-form-field {
+    // This option allows the textboxes chipContainer to be centered inside of the outer div
+    flex-direction: unset !important;
+    border-radius: 8px;
+  }
+
+  .mat-mdc-form-field-flex {
+    //This is the styling for the inside of the selector box (figma)
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: auto;
+    width: fit-content;
+    //padding: 3px 8px 6px 16px;
+
+  }
+
+  .mdc-text-field--outlined .mdc-notched-outline{
+    // Custom round borders on chip container
+    border-style: solid !important;
+    border-color: #79747E !important;
+    border-radius: 8px !important;
+  }
+
+
+
+  .mat-mdc-text-field-wrapper:hover {
+    //color: #ecedf6;
+    transition-duration: 0.2s;
+    background-color: #e3e3ee !important;
+
+  }
+
+
+  .mdc-notched-outline {
+    // Specification that we do not want the default border box.
+    border-radius: 8px;
+    border: solid 1px #79747E !important;
+    border-style: solid;
+
+  }
+
+  .mat-mdc-form-field-infix {
+    // This options allows the textbox size to fit its text content
+    // (button will become wider as the label does)
+    //min-width: 74px;
+    width: fit-content;
+
+  }
+
+}
+
+.mat-mdc-form-field-type-mat-date-range-input {
+  .mat-mdc-form-field-infix {
+    width: 100% !important;
+  }
+}
+
+
+// Style variant for when a value has been chosen
+
+.chipContainerChosen {
+  border-style: hidden !important;
+  width: auto !important;
+
+  .mat-mdc-form-field {
+    // This option allows the textboxes chipContainer to be centered inside of the outer div
+    flex-direction: unset !important;
+  }
+
+  .mat-mdc-form-field-flex {
+    //This is the styling for the inside of the selector box (figma)
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+    color: #325354;
+    border-style: hidden;
+    margin: auto;
+    width: fit-content;
+    padding: 3px 8px 6px 16px;
+  }
+
+  .mat-mdc-text-field-wrapper {
+    // This is the styling for the wrapper of the selector box
+    height: 32px;
+    border-radius: 8px;
+    //background-color: #CEF0F2;
+    width: fit-content;
+    // for
+    //padding-left: 5px;
+    transition-duration: 0.15s;
+  }
+
+  .mdc-text-field--outlined .mdc-notched-outline{
+    // No borders on chip container chosen.
+    border-style: hidden;
+  }
+
+  .mat-mdc-form-field-infix {
+    // This options allows the textbox size to fit its text content
+    // (button will become wider as the label does)
+    //min-width: 72px;
+    width: fit-content;
+  }
+}
+
+
+// ----------------------------------------
+// --------- PSEUDOBUTTON ELEMENT ---------
+// ----------------------------------------
+
+// Works as a button, styled as a div.
+
+// To work properly:
+//<div matRipple class="pseudobutton" (click)="edit()">
+//  <div class="titleStyle">title here</div>
+//  <div class="infoStyle">info here</div>
+//  <button mat-icon-button class="editButton">
+//    <mat-icon>nameofbutton</mat-icon>
+//  </button>
+//</div>
+
+.pseudobutton-wrapper {
+  width: 100%;
+}
+
+.pseudobutton-wrapper:hover {
+  background: #CEF0F2;
+  transition: 0.1s;
+
+}
+
+.pseudobutton {
+  display: flex;
+  padding: 10px 10px 10px 20px;
+  align-items: center;
+  gap: 20px;
+  flex: 1 0 0;
+  border-radius: 16px;
+}
+
+.pseudobutton2 {
+  display: flex;
+  height: fit-content;
+  padding: 16px 10px 16px 20px;
+  align-items: center;
+  gap: 20px;
+  flex: 1 0 0;
+  align-self: stretch;
+  border-radius: 16px;
+}
+
+.pseudobutton2disabled {
+  display: flex;
+  height: fit-content;
+  padding: 16px 10px 16px 20px;
+  align-items: center;
+  gap: 20px;
+  flex: 1 0 0;
+  align-self: stretch;
+  border-radius: 16px;
+}
+
+.pseudobutton:hover {
+  background-color: #CEF0F2;
+  transition: 0.1s;
+}
+
+.pseudobutton2:hover {
+  background-color: #CEF0F2;
+  transition: 0.1s;
+}
+
+
+// -------------------------------------------------
+// ------------ CUSTOM CALENDAR ELEMENT ------------
+// -------------------------------------------------
+
+.mat-datepicker-content .mat-calendar {
+  width: 296px !important;
+}
+
+.mat-date-range-input-end-wrapper {
+  flex-grow: 1;
+  width: 100%;
+}
+
+//.searchInput {
+//  .mat-calendar {
+//    background-color: pink !important;
+//    border-radius: 2px 2px 10px 10px !important;
+//  }
+//}
+
+.mat-calendar {
+  // Default calendar style by figma
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  border-radius: 10px;
+  background: var(--m-3-white, #FFF);
+
+  /* M3/Elevation Light/2 */
+  box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30);
+}
+
+.mat-calendar-header {
+  padding: 0px !important;
+}
+
+.mat-calendar-body-cell-content {
+  // no border shown for regular days
+  top: 5%;
+  left: 5%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 90%;
+  height: 90%;
+  line-height: 1;
+  border-width: 1px;
+  border-style: none !important;
+  border-radius: 999px;
+  color: var(--mat-datepicker-calendar-date-text-color);
+  border-color: var(--mat-datepicker-calendar-date-outline-color);
+}
+
+// We want no border
+.mat-calendar-body-cell-preview {
+  border: none !important;
+}
+
+// The selected days are going to have a dark background and light font color
+.mat-calendar-body-selected {
+  color: white;
+  background-color: #323E48;
+}
+
+// When in range, the background of the day is going to be darker
+.mat-calendar-body-in-preview {
+  background-color: #323E4849 !important;
+}
+
+// Smoothing borders for start and ending ranged dates
+.mat-calendar-body-preview-start {
+  border-top-left-radius: 200px;
+  border-bottom-left-radius: 200px;
+}
+
+.mat-calendar-body-preview-end {
+  border-top-right-radius: 200px;
+  border-bottom-right-radius: 200px;
+}
+
+// Today is going to have a soft outline
+.mat-calendar-body-today {
+  outline: solid #49454F 1px;
+}
+
+.titleStyle {
+  display: flex;
+  width: 100px;
+  align-items: flex-start;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.redIcon {
+  color: red !important;
+}
+
+.infoStyle {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex: 1 0 0;
+  font-weight: 400;
+}
+
+// -----------------------------------------
+
+.breadcrumbStyle {
+  color: #8C9398;
+
+  /* M3/headline/small */
+  font-family: Inter;
+  /* 24px by figma. Maybe a bit bigger? */
+  font-size: 28px;
+  max-height: 50px !important;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 36px; /* 133.333% */
+  display: inline;
+
+  padding-right: 15px;
+}
+
+.breadcrumbStyleDark {
+  color: #323E48;
+
+  /* M3/headline/small */
+  font-family: Inter;
+  /* 24px by figma. Maybe a bit bigger? */
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 36px; /* 133.333% */
+  display: inline;
+
+  padding-right: 15px;
+}
+
+.custom-container-basic {
+  .mdc-dialog__surface {
+    display: inline-flex !important;
+    padding: 40px 0 !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    gap: 40px !important;
+    border-radius: 20px !important;
+    background: var(--m-3-white, #FFF) !important;
+
+    /* Shadow_Cards_Hover */
+    box-shadow: 0px 0px 1px 0px rgba(66, 71, 76, 0.25), 0px 4px 8px 0px rgba(10, 11, 30, 0.06), 0px 8px 48px 0px rgba(10, 11, 30, 0.08) !important;
+  }
+}
+
+.custom-container-searchbar {
+
+  .mdc-dialog .mdc-dialog__content {
+    padding: 0 !important;
+  }
+
+  .mdc-dialog__surface {
+    display: inline-flex !important;
+    padding: 40px !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    gap: 40px !important;
+    border-radius: 20px !important;
+    background: var(--m-3-white, #FFF) !important;
+
+    /* Shadow_Cards_Hover */
+    box-shadow: 0px 0px 1px 0px rgba(66, 71, 76, 0.25), 0px 4px 8px 0px rgba(10, 11, 30, 0.06), 0px 8px 48px 0px rgba(10, 11, 30, 0.08) !important;
+  }
+}
+
+// default dialog style -- kept as a template
+.mdc-dialog__surface {
+  background-color: green;
+}
+
+.profileInput {
+  display: flex;
+  //width: 300px !important;
+  height: 56px !important;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.blueDiv {
+  border-top-width: thin !important;
+  width: 100%;
+  background-color: #84DADE !important;
+}
+
+.searchDivider {
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  align-items: flex-start;
+  width: 98%;
+  margin-left: 1% !important;
+  color: #CAC4D0 !important;
+  border-top-width: thin !important;
+  box-shadow: 0px -1px 0px 0px rgba(117, 117, 117, 0.34) !important;
+}
+
+.popupDivider {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  align-self: stretch;
+  color: #CAC4D0 !important;
+  width: calc(100% + 30px) !important;
+  border-top-width: thin !important;
+  box-shadow: 0px -1px 0px 0px rgba(117, 117, 117, 0.34) !important;
+  margin-left: -20px !important;
+}
+
+.lightDivider {
+  display: flex;
+  padding: 0px 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  align-self: stretch;
+  color: #C5C9CB !important;
+}
+
+.lightDividerSmall {
+  display: flex;;
+  padding: 0px 16px;
+  margin-right: 16px !important;
+  margin-left: 16px !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  align-self: stretch;
+  color: #C5C9CB;
+}
+
+// Styling for the filtering menu.
+.cdk-overlay-container .cdk-overlay-pane .filteringMenu {
+  min-width: 200px;
+  position: absolute !important;
+  background-color: white;
+  // Uncomment this to make the menu grow to the left instead.
+  //right: 0 !important;
+}
+
+.cdk-overlay-container .cdk-overlay-pane .fakeButtonSelectionMenu {
+  min-width: 152px;
+  position: absolute !important;
+  background-color: white;
+  right: -25px;
+  top: -14px;
+}
+
+// Per fer les fletxes del mat select mes petites
+.mat-mdc-select-arrow-wrapper {
+  height: 24px;
+  transform: scale(0.75);
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+.mat-mdc-select-panel {
+  padding-top: 8px !important;
+  box-shadow: var(--dt-shadow-elevation-2, 0 1px 2px 0 rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15)) !important;
+  width: 100% !important;
+  max-height: 400px !important;
+  outline: 0 !important;
+  overflow: auto !important;
+  border-radius: 10px !important;
+  box-sizing: border-box !important;
+  position: static !important;
+  background-color: white !important;
+}
+
+.cdk-overlay-pane {
+  background-color: #ffffff00 !important;
+  position: absolute !important;
+  pointer-events: auto !important;
+  box-sizing: border-box !important;
+  z-index: 1000 !important;
+  display: flex !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+
+// Autocomplete pane
+.cdk-overlay-pane:not(.mat-mdc-autocomplete-panel-above) .mdc-menu-surface.mat-mdc-autocomplete-panel {
+
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  border-radius: 20px !important;
+  border-top-right-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+  background: var(--m-3-white, #FFF) !important;
+
+  /* M3/Elevation Light/2 */
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.15), 0px 0px 2px 0px rgba(0, 0, 0, 0.30) !important;
+}
+
+// *********************************************************
+// *********************** IMPORTANT ***********************
+// *********************************************************
+
+// *Default* deployable menu style **DO NOT DELETE!**
+// Otherwise background is transparent!
+.mat-mdc-menu-content {
+  display: flex;
+  padding: 20px 10px !important;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 10px;
+  background: var(--m-3-white, #FFF);
+
+  /* M3/Elevation Light/2 */
+  box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30);
+}
+
+.mat-mdc-menu-item {
+  padding: 8px 24px 8px 16px !important;
+  display: flex;
+  gap: 16px;
+  border-radius: 8px;
+}
+
+.mat-mdc-menu-item:hover {
+  box-shadow: inset 0 0 0 1000px rgba(170, 176, 189, 0.2);
+}
+
+
+// *Default* raised button style **DO NOT DELETE!**
+.mat-mdc-raised-button {
+  border-radius: 200px !important;
+  box-shadow: var(--mdc-protected-button-container-elevation, 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12)) !important;
+}
+
+
+// ---------------------------------------
+// ----------- CUSTOM ELEMENTS -----------
+// ---------------------------------------
+
+.defaultMenu1 {
+}
+
+.doNotTakeUpHeight {
+  height: auto !important;
+}
+
+// Round dark button
+.darkButton {
+  width: max-content;
+  display: flex !important;
+  padding: 10px 24px !important;
+  justify-content: center;
+  align-items: center;
+  height: 40px !important;
+  gap: 8px;
+  border-radius: 100px !important;
+  background: var(--m-3-sys-light-primary, #323E48) !important;
+  color: white !important; // changing colour of text and icons inside of button
+  line-height: 20px !important;
+  font-family: "Inter";
+  cursor: pointer !important;
+
+  .mat-icon {
+    color: white !important;
+  }
+}
+
+.occupyParent {
+  height: 100%;
+  width: 100%;
+}
+
+.embedHtml {
+  background-color: white !important;
+  max-height: 80vh;
+  overflow: scroll;
+  height: 100%;
+}
+
+.centerVid {
+  width: 100%;
+  height: 100%;
+}
+
+.centerComplete {
+  height: 100%;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  gap: 36px;
+}
+
+.centerIframe {
+  margin: auto;
+  display: flex;
+  height: 100%;
+}
+
+.basicHover:hover {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+.darkButton:disabled {
+  //background: var(--m-3-sys-light-primary, #57626c) !important;
+
+  opacity: 0.7;
+  cursor: not-allowed !important;
+  /* M3/Elevation Light/1 */
+  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30) !important;
+}
+
+.darkButton:hover {
+  background: var(--m-3-sys-light-primary, #323E48);
+
+  /* M3/Elevation Light/1 */
+  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30) !important;
+}
+
+// Round light button
+.lightButton {
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 100px !important;
+  box-shadow: 0 0px 0px !important;
+  color: var(--M3-sys-light-primary, #323E48) !important;
+  font-family: "Inter" !important;
+  font-weight: 500 !important;
+  line-height: 20px !important;
+  height: 40px !important;
+  background: white !important;
+
+  .mat-icon {
+    color: #323E48 !important;
+  }
+}
+
+.lightButtonTransparent {
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 100px !important;
+  box-shadow: 0 0px 0px !important;
+  color: var(--M3-sys-light-primary, #323E48) !important;
+  font-family: "Inter" !important;
+  font-weight: 500 !important;
+  line-height: 20px !important;
+  height: 40px !important;
+  background: transparent !important;
+
+  .mat-icon {
+    color: #323E48 !important;
+  }
+}
+
+.stateLayerButton {
+  display: flex;
+  padding: 10px 24px 10px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.lightButton:hover {
+  background: var(--m-3-state-layers-light-primary-opacity-008, rgba(103, 80, 164, 0.08)) !important;
+  color: var(--M3-sys-light-primary, #323E48) !important;
+}
+
+// If button contains icon, leave padding
+.mat-mdc-button:has(.material-icons,mat-icon,[matButtonIcon]) {
+  padding: 8px !important;
+}
+
+.mat-mdc-button[disabled],
+.mat-mdc-unelevated-button[disabled],
+.mat-mdc-raised-button[disabled],
+.mat-mdc-outlined-button[disabled] {
+  pointer-events: auto !important;
+}
+
+
+.forbiddenCursor {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}
+
+.mat-mdc-option {
+  color: #1D1B20 !important;
+}
+
+.forbiddenCursorDarker {
+  opacity: 0.75 !important;
+  cursor: not-allowed !important;
+}
+
+//.darkButton:disabled {
+//  display: flex;
+//  padding: 10px 24px !important;
+//  justify-content: center;
+//  align-items: center;
+//  gap: 8px;
+//  border-radius: 100px !important;
+//  background: #828686 !important;
+//  color: white !important; // changing colour of text and icons inside of button
+//  font-family: "Inter";
+//
+//  .mat-icon {
+//    color: white !important;
+//  }
+//}
+
+
+.dangerButton {
+  display: flex;
+  padding: 10px 24px !important;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 100px !important;
+  background: #E46962 !important;
+  color: white !important; // changing colour of text and icons inside of button
+  font-family: "Inter";
+
+  .mat-icon {
+    color: white !important;
+  }
+}
+
+
+.lightButtonOutlined {
+  display: flex;
+  // these buttons are centered on their parent div.
+  margin: 0 auto;
+  padding: 10px 24px !important;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 100px !important;
+  border: 1px solid #79747E !important;
+  color: #323E48 !important; // changing colour of text and icons inside of button
+
+
+  text-align: center;
+
+  /* M3/label/large */
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  /* 142.857% */
+
+  .mat-icon {
+    color: #79747E !important;
+  }
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #CEF0F2;
+}
+
+.circleSelected {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #323E48;
+}
+
+.circleUnread {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #6750A4;
+}
+
+// styles of ngx cropper so only the image is moved
+.ngx-ic-cropper {
+  pointer-events: none;
+}
+
+.ngx-ic-overlay {
+  pointer-events: none;
+}
+
+
+.mdc-slider__track {
+  background-color: #E6E0E9;
+}
+
+.mdc-slider__thumb-knob {
+  border-color: #323E48 !important;
+  /* border-color: var(--mdc-slider-handle-color, var(--mdc-theme-primary, #6200ee)); */
+  /* border-top-color: ; */
+  /* border-right-color: ; */
+  /* border-bottom-color: ; */
+  /* border-left-color: ; */
+}
+
+.mdc-slider__track--active_fill {
+  border-color: #323E48 !important;
+}
+
+.mdc-slider__track--inactive {
+  background-color: transparent !important;
+  opacity: .24;
+}
+
+// class for an image, supposing it's wider than higher
+
+.onTop {
+  position: absolute;
+}
+
+.fitImageW {
+  width: 100%;
+  height: auto;
+
+}
+
+.fitImageH {
+  width: auto;
+  height: 100%;
+}
+
+
+.lightButtonPurple {
+  display: flex;
+  justify-content: start !important;
+  gap: 8px;
+  border-radius: 100px !important;
+  width: fit-content;
+
+  color: #6750A4 !important;
+
+  /* M3/label/large */
+  font-family: Inter !important;
+  font-size: 14px !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  line-height: 20px !important;
+  /* 142.857% */
+  // this styling was added to avoid too much spacing. extra from figma style.
+  letter-spacing: 1px;
+
+  .mat-icon {
+    // icons inside of the light purple button will also be purple.
+    color: #6750A4;
+  }
+}
+
+.lightButtonPurple:hover {
+  background-color: #6750A414;
+  transition-duration: 0.25s;
+}
+
+.lightButtonPurple .mdc-button__label {
+  margin: 0 !important;
+}
+
+.wider {
+  //margin: auto !important;
+  width: auto;
+  height: 100%;
+}
+
+.higher {
+  //margin: auto !important;
+  width: 100%;
+  height: auto;
+}
+
+
+// Tab styles for the custom profile settings mat tab.
+// Has hover effect
+
+//width: 100% !important;
+//display: inline-grid !important;
+
+.headerExpansionIcon {
+  margin: auto;
+}
+
+.isExpanded {
+  transform: rotate(180deg);
+  transition-duration: 0.25s;
+}
+
+.notExpanded {
+  transform: rotate(0deg) !important;
+  transition-duration: 0.25s;
+}
+
+.matButton40 {
+  height: 24px;
+  width: 24px;
+  font-size: 24px;
+}
+
+.viewProductAsTab {
+  .mat-mdc-tab-header {
+    padding: 0 0 10px 0 !important;
+    padding-top: 0px;
+    position: sticky !important;
+    top: 48px !important;
+    z-index: 5 !important;
+    background-color: white;
+  }
+
+  .mdc-tab {
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    align-items: flex-end;
+    border-radius: 16px;
+  }
+
+  .mdc-tab:hover {
+    transition-duration: 0.25s;
+    background-color: #e1e1e1 !important;
+  }
+}
+
+.mktBrandsTab {
+  .mat-mdc-tab-header {
+    padding: 10px 0px !important;
+    position: sticky !important;
+    top: 40px !important;
+    z-index: 5 !important;
+    background-color: white;
+  }
+
+
+  .mdc-tab {
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    align-items: flex-end;
+    border-radius: 16px;
+  }
+
+  .mdc-tab:hover {
+    transition-duration: 0.25s;
+    background-color: #e1e1e1 !important;
+  }
+}
+
+.mat-mdc-option.mdc-list-item--selected .mdc-list-item__primary-text {
+  color: #84DADE !important;
+}
+
+.mat-primary .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-minimal::after {
+  color: #84DADE !important;
+}
+
+.brandsTab {
+  .mat-mdc-tab-labels {
+    width: fit-content;
+    //width: max-content !important;
+    gap: 10px;
+  }
+
+  .mdc-tab {
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    align-items: flex-end;
+    border-radius: 16px;
+  }
+
+  .mdc-tab:hover {
+    transition-duration: 0.25s;
+    background-color: #e1e1e1 !important;
+  }
+
+  .mat-mdc-tab-header {
+    padding: 10px 0px !important;
+    position: sticky !important;
+    top: 36px !important;
+    z-index: 5 !important;
+    background-color: white;
+    //padding: 10px 20px;
+  }
+}
+
+.matTab {
+  .mat-mdc-tab-list {
+
+  }
+
+  .mat-mdc-tab-header {
+    //top: 76px !important;
+    top: 40px !important;
+    position: sticky !important;
+    z-index: 5 !important;
+    background-color: white;
+  }
+}
+
+.viewButton {
+  display: flex !important;
+  padding: 6px 16px !important;
+  justify-content: center;
+  align-items: center;
+  height: 40px !important;
+  gap: 8px;
+  border-radius: 8px !important;
+  background: var(--m-3-sys-light-primary, #84DADE) !important;
+  color: #323E48 !important;
+  font-weight: 600 !important;
+  line-height: 20px !important;
+  font-family: "Inter";
+  cursor: pointer !important;
+  width: 66px;
+  margin: auto !important;
+}
+
+.mat-mdc-tab-label-container {
+  border-bottom: none !important;
+}
+
+.profileMatTab {
+  //padding-top: 20px !important;
+  height: 100% !important;
+  display: block !important;
+
+
+  .mat-mdc-tab-label-container {
+    display: flex;
+    /* flex-grow: 1; */
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .mat-mdc-tab-header {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    --mdc-tab-indicator-active-indicator-height: 2px;
+    --mdc-tab-indicator-active-indicator-shape: 0;
+    --mdc-secondary-navigation-tab-container-height: 48px;
+    justify-content: center;
+  }
+
+  .mat-mdc-tab-labels {
+    width: fit-content;
+    margin: auto;
+
+    gap: 10px;
+    display: flex;
+    flex: 1 0 auto;
+  }
+
+  .profileMatTab .mdc-tab {
+    padding-right: 24px !important;
+    padding-left: 24px !important;
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    align-items: flex-end;
+    border-radius: 16px;
+  }
+
+  .mdc-tab {
+    padding-right: 24px !important;
+    padding-left: 24px !important;
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    align-items: flex-end;
+    border-radius: 16px;
+  }
+
+  .mdc-tab:hover {
+    transition-duration: 0.25s;
+    background-color: #e1e1e1 !important;
+  }
+
+  .mat-mdc-tab-body-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    transition: height 500ms cubic-bezier(0.35, 0, 0.25, 1);
+    height: inherit;
+  }
+}
+
+
+//.mat-form-field-appearance-outline .mat-form-field-outline {
+//  color: white !important;
+//}
+
+/* Font color */
+input.mat-input-element {
+  color: white !important;
+}
+
+.mdc-icon-button {
+  border-radius: 200px !important;
+}
+
+.fullIcon {
+  font-family: 'Material Icons' !important;
+  transition-duration: 0.5s;
+}
+
+.outlinedIcon {
+  font-family: "Material Icons Outlined" !important;
+  transition-duration: 0.5s;
+}
+
+// by deafult, every icon button has a hover effect
+.mat-mdc-icon-button:hover {
+  box-shadow: inset 0 0 0 1000px rgba(170, 176, 189, 0.2);
+}
+
+
+.mat-button-ripple {
+  display: block !important;
+}
+
+.mdc-icon-button:disabled {
+
+  .mat-icon {
+    color: #838383;
+  }
+}
+
+
+.mat-mdc-button {
+  border-radius: 16px;
+}
+
+.mat-calendar-period-button {
+  color: black !important;
+}
+
+
+.mat-mdc-autocomplete-panel {
+  /**/
+}
+
+.headline {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: stretch;
+  color: var(--m-3-sys-light-on-surface, #1D1B20);
+
+  /* M3/body/large */
+  font-size: 16px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.headlineLight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: stretch;
+  color: #59626A;
+
+  /* M3/body/large */
+  font-size: 16px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+
+.headlineBolder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: stretch;
+  color: var(--m-3-sys-light-on-surface, #1D1B20);
+
+  /* M3/body/large */
+  font-size: 16px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.headlineBig {
+  align-self: stretch;
+  color: var(--m-3-sys-light-primary, #323E48);
+  text-align: center;
+
+  /* M3/headline/medium */
+  font-family: Inter;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 36px;
+  /* 128.571% */
+}
+
+.headline14 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: stretch;
+
+  color: var(--m-3-sys-light-on-surface, #1D1B20);
+
+  /* M3/body/medium */
+  font-family: Inter;
+  font-size: 14px !important;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.headline11 {
+  font-size: 11px !important;
+}
+
+
+.headline14bold {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: stretch;
+
+  color: var(--m-3-sys-light-on-surface, #1D1B20);
+
+  /* M3/body/medium */
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.headline14light {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: stretch;
+
+  color: var(--m-3-ref-primary-primary-70, #747C83);
+
+  /* M3/body/medium */
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.headline14lightClickable {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: stretch;
+
+  color: var(--m-3-ref-primary-primary-70, #747C83);
+
+  /* M3/body/medium */
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.headline14lightClickable:hover {
+  cursor: pointer;
+  font-weight: 600 !important;
+  line-height: 20px !important;
+  color: #181e23 !important;
+}
+
+.headline14medium {
+  color: var(--m-3-ref-secondary-secondary-10, #325354);
+
+  /* M3/body/medium */
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  /* 142.857% */
+}
+
+.previewIconBig {
+  width: 100px;
+  height: 100px;
+}
+
+
+
+.previewIconSmall {
+  width: 24px;
+  height: 24px;
+}
+
+.tooltip-inner {
+}
+
+.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.tooltip {
+  padding: 6px;
+  color: white !important;
+  background-color: #323E48;
+  border-radius: 8px;
+  //display: inline-block;
+  //text-align: justify;
+  //width: 100%;
+  //white-space: nowrap !important;
+  //max-width: none !important;
+}
+
+.title1 {
+  display: flex;
+  width: max-content;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+
+.titleMedium {
+  color: var(--m-3-sys-light-primary, #323E48);
+
+  /* M3/title/medium */
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  /* 150% */
+}
+
+.smallClickableFont {
+  align-self: stretch;
+  color: var(--m-3-ref-primary-primary-70, #747C83);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  /* 142.857% */
+  cursor: pointer;
+}
+
+
+.mat-mdc-list-item:focus {
+  border-radius: 16px;
+  background: var(--m-3-sys-light-secondary-container, #CEF0F2) !important;
+  color: black !important;
+}
+
+
+.mat-mdc-list-item .is-active {
+  border-radius: 16px;
+  background: var(--m-3-sys-light-secondary-container, #CEF0F2) !important;
+  color: black !important;
+}
+
+.titleContainer {
+  position: sticky !important;
+  top: 0 !important;
+  width: 100% !important;
+  background-color: white !important;
+  z-index: 9 !important;
+  display: flex;
+  justify-content: space-between;
+}
+
+.titleContainerVarious {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+
+.mat-mdc-tab .mdc-tab-indicator__content--underline {
+  width: 100%;
+  color: #6750A4;
+  border-top-width: 3px !important;
+  border-top-right-radius: 100px !important;
+  border-top-left-radius: 100px !important;
+}
+
+
+.headlineTitle {
+  color: var(--m-3-sys-light-primary, #323E48);
+
+  /* M3/headline/medium */
+  font-size: 28px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 36px;
+}
+
+.headlineTitle24 {
+  align-self: stretch;
+  color: var(--m-3-sys-light-primary, #323E48);
+
+  /* M3/headline/small */
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+  /* 133.333% */
+}
+
+
+.supportingText {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  color: var(--m-3-sys-light-on-surface-variant, #49454F);
+
+  /* M3/body/medium */
+  font-size: 14px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.trailingSupportingText {
+  color: var(--m-3-sys-light-on-surface-variant, #49454F);
+  text-align: right;
+
+  /* M3/label/small */
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  margin: auto;
+}
+
+.trailingSupportingTextOne {
+  text-align: right;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 25px;
+  background-color: #6750a4;
+}
+
+.trailingSupportingTextMultiple {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 25px;
+  background-color: #6750a4;
+}
+
+.oneLine {
+  padding-left: 5px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  /* number of lines to show */
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  color: white !important;
+  align-items: center;
+  border-radius: 16px;
+  background: var(--m-3-sys-light-inverse-surface, #322F35) !important;
+}
+
+.mat-mdc-snack-bar-action {
+  color: white !important;
+}
+
+
+.mat-mdc-snack-bar-container .mat-mdc-focus-indicator {
+  background-color: #322F35 !important;
+}
+
+//Expansion Table
+tr.detail-row {
+  height: 0 !important;
+}
+
+tr.element-row:not(.expanded-row):hover {
+  background: whitesmoke !important;
+}
+
+tr.element-row:not(.expanded-row):active {
+  background: #efefef !important;
+}
+
+.element-row td {
+  border-bottom-width: 0 !important;
+}
+
+.element-detail {
+  overflow: hidden !important;
+  display: flex !important;
+}
+
+.mat-footer-row,
+.mat-header-row,
+.mat-row {
+  display: inline-flex;
+  min-width: 100% !important;
+}
+
+//FI Expansion table
+
+.mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+  color: #6750A4 !important;
+}
+
+//Error tab marcat
+.mat-tab-label-active {
+  .mat-tab-label-content {
+    font-weight: bold;
+
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: #10069f;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}
+
+mat-ink-bar {
+  display: none !important;
+}
+
+//FI Error tab marcat
+
+.right {
+  float: right;
+}
+
+.clicable {
+  cursor: pointer;
+}
+
+.displayBlock > .mat-grid-tile-content {
+  //justify-content: flex-start !important ;
+  align-items: flex-start !important;
+}
+
+.mat-form-field {
+  width: 100% !important;
+}
+
+.ngx-mat-timepicker form .ngx-mat-timepicker-table .ngx-mat-timepicker-tbody tr td {
+  max-width: 40px !important;
+  width: 40px !important;
+
+}
+
+.dreta {
+  text-align: right;
+}
+
+.import {
+  text-align: right;
+  padding: 0 10px !important;
+}
+
+.mat-column-actiu {
+  padding: 0 10px !important;
+}
+
+.mh630 {
+  max-height: 630px;
+}
+
+.centre {
+  text-align: center;
+}
+
+.w0 {
+  width: 0;
+}
+
+.w80 {
+  width: 80%;
+}
+
+.w95 {
+  width: 95%;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.smallMarginForInputText {
+  margin-left: 7px;
+}
+
+.w130 {
+  width: 130px !important;
+  overflow: hidden !important;
+}
+
+
+.mat-form-field-custom {
+  width: 300px;
+  margin: 5px;
+}
+
+.mat-form-field-custom2 {
+  width: 500px;
+  margin: 5px;
+}
+
+.mat-form-field-wrapper {
+  //  margin-bottom: -1.25em;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.fileActions {
+  text-align: end !important;
+}
+
+//.mdc-data-table__cell {
+//  box-sizing: border-box;
+//  text-align: end;
+//  text-overflow: ellipsis;
+//}
+
+.mdc-data-table__cell,
+.mdc-data-table__header-cell {
+  padding: 0 8px 0 8px !important;
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  display: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+.colourBackgroud {
+  background: #10069f !important;
+  color: white !important;
+  padding: 13px;
+}
+
+.divIcon {
+  height: 50px;
+  width: 50px;
+  display: table-cell;
+  text-align: center;
+  position: relative;
+  top: 14px;
+}
+
+.mdc-button .mdc-button__label {
+  margin: auto;
+}
+
+.iconButtonToggle {
+  display: flex;
+  width: 48px;
+  height: 48px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.iconButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 100px;
+}
+
+.iconButton {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.imgIcon {
+  height: 100px;
+  width: 100px;
+  vertical-align: middle;
+  display: table-cell;
+  text-align: center;
+}
+
+.pinIcon {
+  transform: rotate(45deg);
+}
+
+.pinIconSmall {
+  width: 20px !important;
+  height: 20px !important;
+  font-size: 20px !important;
+  transform: rotate(45deg);
+}
+
+// -------------------------------------------
+// ---------- Styles for checkboxes ----------
+// -------------------------------------------
+
+.mdc-checkbox {
+  // color for the background color of the checkbox when unchecked
+
+}
+
+// border color is slightly lighter than default
+.mdc-checkbox__native-control ~ .mdc-checkbox__background {
+
+  border-color: #C5C9CB !important;
+}
+
+// On checkbox hover, make the border color darker
+.mdc-checkbox__native-control:hover ~ .mdc-checkbox__background {
+  border-color: #323E48 !important;
+}
+
+.mdc-checkbox__background {
+  // color of the checkbox tick when checked
+  color: white;
+}
+
+
+// the tick icon is slightly smaller than the default
+.mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background .mdc-checkbox__checkmark {
+  width: 12px;
+  height: 12px;
+  margin: auto;
+}
+
+// same thing for the indeterminate icon
+.mdc-checkbox__native-control:indeterminate ~ .mdc-checkbox__background .mdc-checkbox__mixedmark {
+  width: 10px;
+  height: 0px;
+  margin: auto;
+}
+
+// checked boxes have the same background and border color.
+.mdc-checkbox__native-control:checked ~ .mdc-checkbox__background {
+  border-color: #323E48 !important;
+  background-color: #323E48 !important;
+  background-size: 10px !important;
+  font-size: 10px;
+}
+
+// same thing for indeterminate
+.mdc-checkbox__native-control:indeterminate ~ .mdc-checkbox__background {
+  border-color: #323E48 !important;
+  background-color: #323E48 !important;
+  background-size: 10px !important;
+  font-size: 10px;
+}
+
+
+.togglePinButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8.333px;
+  flex-shrink: 0;
+
+  .pinIconSmall2 {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 20px !important;
+    transform: rotate(45deg);
+    color: var(--m-3-ref-primary-primary-80, #8C9398);
+  }
+}
+
+.togglePinButton:disabled {
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8.333px;
+  flex-shrink: 0;
+
+  .pinIconSmall2 {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 20px !important;
+    transform: rotate(45deg);
+    color: var(--m-3-ref-primary-primary-80, #b4c0c5);
+  }
+
+}
+
+.coloredFullIcon {
+  color: #AFE7EA !important;
+  font-family: 'Material Icons' !important;
+}
+
+.coloredFullIconStrong {
+  color: #84DADE !important;
+  font-family: 'Material Icons' !important;
+}
+
+.topCard {
+  float: left;
+  top: -18px;
+  left: 12px;
+  vertical-align: center;
+}
+
+.top h1 {
+
+  margin-top: 12px !important;
+  margin-left: 94px !important;
+}
+
+// DEFAULT ICON STYLE -- FOR ALL ICONS
+.mat-icon {
+  color: #323E48;
+  // -------------------
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.imgIcon > mat-icon {
+  transform: scale(6);
+  margin-top: 4px;
+}
+
+.divIcon > mat-icon {
+  transform: scale(2);
+}
+
+.mleft5 {
+  margin-left: 5px;
+}
+
+.mright5 {
+  margin-right: 5px;
+}
+
+.mtop5 {
+  margin-top: 5px !important;
+}
+
+.mtop15 {
+  margin-top: 15px;
+}
+
+.mtop20 {
+  margin-top: 20px !important;
+}
+
+.mtop40 {
+  margin-top: 40px;
+}
+
+.mtop50 {
+  margin-top: 50px;
+}
+
+.mtop70 {
+  margin-top: 70px;
+}
+
+.mtop100 {
+  margin-top: 100px;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.p2 {
+  padding: 2px;
+}
+
+.p20 {
+  padding: 20px;
+}
+
+.mleft10 {
+  margin-left: 10px !important;
+}
+
+.mleft10f + .mleft10f {
+  margin-left: 10px;
+}
+
+.mbott5 {
+  margin-bottom: 5px !important;
+}
+
+.mbott10 {
+  margin-bottom: 10px !important;
+}
+
+.mbott15 {
+  margin-bottom: 15px;
+}
+
+.p15 {
+  padding: 15px;
+}
+
+.p5 {
+  padding: 5px;
+}
+
+.w33 {
+  width: calc(100% / 3);
+}
+
+.inline {
+  display: inline;
+}
+
+.m1 {
+  //margin: 1px;
+  //padding: 0 5px 0 5px;
+}
+
+.m5 {
+  margin: 5px;
+}
+
+.m20 {
+  margin: 20px;
+}
+
+.w50 {
+  width: 50%;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.mat-card-grid {
+  width: calc(100% - 70px);
+  //height: calc(100% - 70px);
+}
+
+.mig {
+  margin: 0 auto;
+}
+
+.tleft {
+  text-align: left;
+}
+
+.card1200 {
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #ECF9FA;
+  color: #1D1B20;
+}
+
+body {
+  margin: 0;
+  font-family: Inter;
+  color: #1D1B20;
+}
+
+
+//Colors estat incidència
+.estat_nou {
+  background: #ff760025;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.estat_en_espera {
+  background: #ff7db925;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.estat_en_curs {
+  background: #019de725;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.estat_error {
+  background: #ff000025;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.estat_resolta {
+  background: #6fd16925;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.estat_tancada {
+  background: #9a979725;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+//FI Colors estat incidència
+
+//MAPA
+
+.ol-attribution {
+  display: none;
+}
+
+.ol-popup {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 0 15px 0;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  bottom: 12px;
+  left: -50px;
+  min-width: 280px;
+}
+
+.mat-datepicker-content {
+  border-radius: 10px !important;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+.mat-mdc-menu-panel {
+  border-radius: 10px !important;
+  max-width: 400px !important;
+  box-shadow: var(--mdc-protected-button-container-elevation, 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12)) !important;
+}
+
+.ol-popup:after,
+.ol-popup:before {
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.ol-popup:after {
+  border-top-color: white;
+  border-width: 10px;
+  left: 48px;
+  margin-left: -10px;
+}
+
+.ol-popup:before {
+  border-top-color: #cccccc;
+  border-width: 11px;
+  left: 48px;
+  margin-left: -11px;
+}
+
+.ol-popup-closer {
+  text-decoration: none;
+  position: absolute;
+  top: 2px;
+  right: 8px;
+}

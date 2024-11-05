@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  height: calc(100vh - 94px);
+  width: 100%;
+}
+
+.sidebar {
+  flex: 0 1 auto;
+  overflow: auto;
+}
+.content {
+  width: 100%;
+  flex: 1;              /* 2 */
+}
+.content-div {
+  height: calc(100vh - 109px);
+  overflow: auto;
+}
+.p15-router {
+  padding: 0 15px 15px 15px;
+}
+

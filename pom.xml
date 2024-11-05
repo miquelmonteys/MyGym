@@ -9,11 +9,11 @@
         <version>3.2.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.stpg</groupId>
-    <artifactId>forms</artifactId>
+    <groupId>com.</groupId>
+    <artifactId>mygym</artifactId>
     <version>0.0.1</version>
-    <name>Forms</name>
-    <description>Forms</description>
+    <name>MyGym</name>
+    <description>MyGym</description>
 
     <repositories>
 <!--        <repository>-->

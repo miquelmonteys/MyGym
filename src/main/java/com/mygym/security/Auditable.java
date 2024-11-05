@@ -1,4 +1,4 @@
-package com.stpg.forms.security;
+package com.mygym.security;
 
 import jakarta.persistence.*;
 import lombok.Getter;

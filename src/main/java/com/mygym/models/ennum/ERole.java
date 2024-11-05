@@ -1,4 +1,4 @@
-package com.stpg.forms.models.ennum;
+package com.mygym.models.ennum;
 
 public enum ERole {
     // ------------ STPG ROLES ------------

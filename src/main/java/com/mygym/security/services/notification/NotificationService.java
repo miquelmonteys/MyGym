@@ -1,4 +1,4 @@
-package com.stpg.forms.security.services.notification;
+package com.mygym.security.services.notification;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;

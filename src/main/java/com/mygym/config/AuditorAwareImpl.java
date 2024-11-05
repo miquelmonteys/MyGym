@@ -1,6 +1,6 @@
-package com.stpg.forms.config;
+package com.mygym.config;
 
-import com.stpg.forms.security.services.UserDetailsImpl;
+import com.mygym.security.services.UserDetailsImpl;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.context.SecurityContextHolder;
 

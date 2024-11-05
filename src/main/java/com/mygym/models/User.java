@@ -1,8 +1,8 @@
-package com.stpg.forms.models;
+package com.mygym.models;
 
+import com.mygym.security.Auditable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import com.stpg.forms.security.Auditable;
 import lombok.Getter;
 import lombok.Setter;
 

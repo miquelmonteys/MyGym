@@ -1,7 +1,7 @@
-package com.stpg.forms.security;
+package com.mygym.security;
 
-import com.stpg.forms.security.jwt.AuthEntryPointJwt;
-import com.stpg.forms.security.jwt.AuthTokenFilter;
+import com.mygym.security.jwt.AuthEntryPointJwt;
+import com.mygym.security.jwt.AuthTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

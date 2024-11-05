@@ -1,10 +1,10 @@
-package com.stpg.forms.security.services;
+package com.mygym.security.services;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-import com.stpg.forms.models.Role;
-import com.stpg.forms.models.User;
+import com.mygym.models.Role;
+import com.mygym.models.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;

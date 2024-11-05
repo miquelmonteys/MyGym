@@ -1,6 +1,6 @@
-package com.stpg.forms.repository;
+package com.mygym.repository;
 
-import com.stpg.forms.models.User;
+import com.mygym.models.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.stpg.forms.config;
+package com.mygym.config;
 
 
 import jakarta.persistence.AttributeConverter;

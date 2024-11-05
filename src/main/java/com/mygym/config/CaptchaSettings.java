@@ -1,4 +1,4 @@
-package com.stpg.forms.config;
+package com.mygym.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

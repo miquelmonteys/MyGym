@@ -1,7 +1,7 @@
-package com.stpg.forms.security.jwt;
+package com.mygym.security.jwt;
 
 
-import com.stpg.forms.security.services.UserDetailsServiceImpl;
+import com.mygym.security.services.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,7 +1,7 @@
-package com.stpg.forms.security.services;
+package com.mygym.security.services;
 
-import com.stpg.forms.models.User;
-import com.stpg.forms.repository.UserRepository;
+import com.mygym.repository.UserRepository;
+import com.mygym.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
-	UserRepository userRepository;
+    UserRepository userRepository;
 
 	@Override
 	@Transactional

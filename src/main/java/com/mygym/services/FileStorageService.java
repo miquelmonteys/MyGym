@@ -1,7 +1,7 @@
-package com.stpg.forms.services;
+package com.mygym.services;
 
 
-import com.stpg.forms.config.FileStorageProperties;
+import com.mygym.config.FileStorageProperties;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

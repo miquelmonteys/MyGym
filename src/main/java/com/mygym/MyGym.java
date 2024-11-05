@@ -1,4 +1,4 @@
-package com.stpg.forms;
+package com.mygym;
 
 
 import jakarta.annotation.PostConstruct;
@@ -16,12 +16,12 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 @SpringBootApplication
 @EnableScheduling
 @EnableAsync
-public class Forms {
+public class MyGym {
 //INIT
 
 
 
-    private static final Logger logger = LoggerFactory.getLogger(Forms.class);
+    private static final Logger logger = LoggerFactory.getLogger(MyGym.class);
 
     // necessari per executar operacions asincrones
     @Bean(name = "processExecutor")
@@ -112,7 +112,7 @@ public class Forms {
 //    }
 
     public static void main(String[] args) {
-        SpringApplication.run(Forms.class, args);
+        SpringApplication.run(MyGym.class, args);
     }
 
 }

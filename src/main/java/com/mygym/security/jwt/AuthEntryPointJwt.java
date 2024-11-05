@@ -1,4 +1,4 @@
-package com.stpg.forms.security.jwt;
+package com.mygym.security.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletException;

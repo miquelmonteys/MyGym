@@ -1,7 +1,7 @@
-package com.stpg.forms.models;
+package com.mygym.models;
 
 
-import com.stpg.forms.models.ennum.ERole;
+import com.mygym.models.ennum.ERole;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

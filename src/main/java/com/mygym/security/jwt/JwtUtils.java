@@ -1,8 +1,8 @@
-package com.stpg.forms.security.jwt;
+package com.mygym.security.jwt;
 
 import java.util.Date;
 
-import com.stpg.forms.security.services.UserDetailsImpl;
+import com.mygym.security.services.UserDetailsImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

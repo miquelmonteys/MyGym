@@ -1,0 +1,18 @@
+package com.mygym.models;
+
+import com.mygym.security.Auditable;
+import jakarta.persistence.Id;
+
+import java.util.List;
+
+public class Rutina extends Auditable {
+    @Id
+    private String id;
+    private String nombre;
+    private String descripcio;
+    private List<Exercici> exercicis;
+
+    // Getters i setters
+
+
+}

@@ -3,6 +3,7 @@ package com.mygym.controllers;
 import com.mygym.models.Rutina;
 import com.mygym.services.RutinaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,4 +32,15 @@ public class RutinaController {
     public Rutina treureExercicisDeRutina(@PathVariable String id, @RequestBody List<String> exercicis) {
         return rutinaService.treureExercicisDeRutina(id, exercicis);
     }
+    //NOU
+
+    /*
+    @GetMapping("/search")
+    public ResponseEntity<List<Rutina>> searchRutines(
+            @RequestParam(required = false) String nom,
+            @RequestParam(required = false) String grupMuscular) {
+        List<Rutina> rutines = rutinaService.searchRutines(nom, grupMuscular);
+        return ResponseEntity.ok(rutines);
+    }
+*/
 }

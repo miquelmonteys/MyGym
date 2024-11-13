@@ -3,6 +3,13 @@ package com.mygym;
 
 import com.mygym.models.User;
 import com.mygym.repository.UserRepository;
+import com.mygym.models.Exercici;
+import com.mygym.models.HistoricRutina;
+import com.mygym.models.Rutina;
+import com.mygym.models.Serie;
+import com.mygym.repository.ExerciciRepository;
+import com.mygym.repository.HistoricRutinaRepository;
+import com.mygym.repository.RutinaRepository;
 import jakarta.annotation.PostConstruct;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
@@ -16,6 +23,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
+import java.time.LocalDate;
+import java.util.Arrays;
+
 @SpringBootApplication
 @EnableScheduling
 @EnableAsync
@@ -25,7 +35,7 @@ public class MyGym {
 
     @Autowired
     UserRepository userRepository;
-
+  
     private static final Logger logger = LoggerFactory.getLogger(MyGym.class);
 
     // necessari per executar operacions asincrones
@@ -40,82 +50,70 @@ public class MyGym {
         logger.info("ThreadPoolTaskExecutor set");
         return threadPoolTaskExecutor;
     }
+    //NO SE FINS ON ESTA BE
+    @Autowired
+    ExerciciRepository exerciciRepository;
 
+    @Autowired
+    RutinaRepository rutinaRepository;
+
+    @Autowired
+    HistoricRutinaRepository historicRutinaRepository;
+    //NO SE FINS ON ESTA BE
     @PostConstruct
     @Transactional
     public void init() {
+
         User u = new User();
         userRepository.save(u);
-//        Brand b1 = null;
-//        Type peelings1 = null, peelings2 = null, peelings3 = null,injectables = null,cosmeceuticals = null;
-//        Product p11 = null, p12 = null, p13 = null, p2 = null, p3=null;
-//        if (roleRepository.findAll().isEmpty()) {
-//            roleRepository.save(new Role(ERole.ROLE_STPG));
-//            roleRepository.save(new Role(ERole.ROLE_DOCTOR));
-//        }
-//        if(brandRepository.findAll().isEmpty()){
-//            b1 = brandRepository.save(new Brand("Brand1"));
-//        }
-//        if(typeRepository.findAll().isEmpty()){
-//            peelings1 = typeRepository.save(new Type("peelings"));
-//            peelings1.setDepth("superficial");
-//            peelings2 = typeRepository.save(new Type("peelings"));
-//            peelings2.setDepth("medium");
-//            peelings3 = typeRepository.save(new Type("peelings"));
-//            peelings3.setDepth("deep");
-//            injectables = typeRepository.save(new Type("injectables"));
-//            cosmeceuticals = typeRepository.save(new Type("cosmeceuticals"));
-//
-//        }
-//        if (productRepository.findAll().isEmpty()) {
-//            productRepository.save(new Product("peeling superficial1", b1, peelings1));
-//            productRepository.save(new Product("peeling superficial2", b1, peelings1));
-//            productRepository.save(new Product("peeling superficial3", b1, peelings1));
-//            productRepository.save(new Product("peeling medium1", b1, peelings2));
-//            productRepository.save(new Product("peeling medium2", b1, peelings2));
-//            productRepository.save(new Product("peeling medium3", b1, peelings2));
-//            productRepository.save(new Product("peeling deep1", b1, peelings3));
-//            productRepository.save(new Product("peeling deep2", b1, peelings3));
-//            productRepository.save(new Product("peeling deep3", b1, peelings3));
-//            productRepository.save(new Product("injectable1", b1, injectables));
-//            productRepository.save(new Product("injectable2", b1, injectables));
-//            productRepository.save(new Product("injectable3", b1, injectables));
-//            productRepository.save(new Product("injectable4", b1, injectables));
-//            productRepository.save(new Product("injectable5", b1, injectables));
-//            productRepository.save(new Product("injectable6", b1, injectables));
-//            productRepository.save(new Product("cosmeceutical1", b1, cosmeceuticals));
-//            productRepository.save(new Product("cosmeceutical2", b1, cosmeceuticals));
-//            productRepository.save(new Product("cosmeceutical3", b1, cosmeceuticals));
-//            productRepository.save(new Product("cosmeceutical4", b1, cosmeceuticals));
-//            productRepository.save(new Product("cosmeceutical5", b1, cosmeceuticals));
-//            productRepository.save(new Product("cosmeceutical6", b1, cosmeceuticals));
-//        }
-        // google calendar init
-//        try {
-//            calendarController.initAPIClientService();
-//            String medinet = calendarController.getMedinetCalendar();
-//            calendarController.createEvent(medinet);
-//        }
-//        catch (Exception e){
-//            throw new ServiceException("Unable to init Google Calendar API");
-//        }
+        if (rutinaRepository.findAll().isEmpty()) {
+            // Crear exercicis comuns per a les rutines
+            Exercici pressBanca = new Exercici(null, "Press Banca", "Treballa el pit", "Pit");
+            Exercici curlBiceps = new Exercici(null, "Curl Biceps", "Treballa els bíceps", "Braços");
+            Exercici pressEspatlles = new Exercici(null, "Press Espatlles", "Treballa les espatlles", "Espatlles");
+            Exercici pesMort = new Exercici(null, "Pes Mort", "Treballa l'esquena i les cames", "Esquena/Cames");
+            Exercici extensioQuadriceps = new Exercici(null, "Extensió Quadriceps", "Treballa els quàdriceps", "Cames");
+            Exercici squat = new Exercici(null, "Sentadeta", "Treballa les cames", "Cames");
 
-        // posar aqui funcions que volem que s'executin cada cop que arrenquem l'aplicacio
+            exerciciRepository.saveAll(Arrays.asList(pressBanca, curlBiceps, pressEspatlles, pesMort, extensioQuadriceps, squat));
+
+            // Crear la rutina Push-Pull-Legs
+            Rutina rutinaPushPullLegs = new Rutina("Push-Pull-Legs", "Rutina clàssica de divisió push-pull-legs");
+            rutinaPushPullLegs.setExercicis(Arrays.asList(
+                    pressBanca.getId().toString(),
+                    pressEspatlles.getId().toString(),
+                    pesMort.getId().toString(),
+                    squat.getId().toString()
+            ));
+            rutinaPushPullLegs.setDescans(1.5);
+            rutinaPushPullLegs.setDuracio(1.0);
+            rutinaRepository.save(rutinaPushPullLegs);
+
+            // Crear la rutina Full Body
+            Rutina rutinaFullBody = new Rutina("Full Body", "Rutina que treballa tot el cos en una sessió");
+            rutinaFullBody.setExercicis(Arrays.asList(
+                    pressBanca.getId().toString(),
+                    curlBiceps.getId().toString(),
+                    squat.getId().toString(),
+                    pressEspatlles.getId().toString()
+            ));
+            rutinaFullBody.setDescans(2.0);
+            rutinaFullBody.setDuracio(1.5);
+            rutinaRepository.save(rutinaFullBody);
+
+            // Crear la rutina Torso-Pierna
+            Rutina rutinaTorsoPierna = new Rutina("Torso-Pierna", "Rutina dividida en sessions de torso i sessions de cames");
+            rutinaTorsoPierna.setExercicis(Arrays.asList(
+                    pressBanca.getId().toString(),
+                    pressEspatlles.getId().toString(),
+                    extensioQuadriceps.getId().toString(),
+                    squat.getId().toString()
+            ));
+            rutinaTorsoPierna.setDescans(1.8);
+            rutinaTorsoPierna.setDuracio(1.2);
+            rutinaRepository.save(rutinaTorsoPierna);
+        }
     }
-
-//    @PostConstruct
-
-    // async custom Quim?
-//    @Bean
-//    public Executor asyncExecutor() {
-//        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-//        executor.setCorePoolSize(2);
-//        executor.setMaxPoolSize(2);
-//        executor.setQueueCapacity(500);
-//        executor.setThreadNamePrefix("AppIncAsync-");
-//        executor.initialize();
-//        return executor;
-//    }
 
     public static void main(String[] args) {
         SpringApplication.run(MyGym.class, args);

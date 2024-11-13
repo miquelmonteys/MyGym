@@ -30,4 +30,20 @@ public class RutinaService {
         rutina.getExercicis().removeAll(exercicis);
         return rutinaRepository.save(rutina);
     }
+    // NOU
+
+    /*
+    public List<Rutina> searchRutines(String nom, String grupMuscular) {
+        if (nom != null && grupMuscular != null) {
+            return rutinaRepository.findByNomContainingAndGrupMuscular(nom, grupMuscular);
+        } else if (nom != null) {
+            return rutinaRepository.findByNomContaining(nom);
+        } else if (grupMuscular != null) {
+            return rutinaRepository.findByGrupMuscular(grupMuscular);
+        } else {
+            return rutinaRepository.findAll();
+        }
+    }
+
+     */
 }

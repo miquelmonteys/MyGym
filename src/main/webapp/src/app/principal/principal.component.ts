@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 interface Routine {
   name: string;
@@ -14,6 +15,9 @@ interface Routine {
 export class PrincipalComponent {
   searchText: string = '';
   showFavorites: boolean = false;
+
+  constructor(private router : Router) {
+  }
 
   routines: Routine[] = [
     { name: 'Rutina de Pit 1', image: 'assets/images/prova1.jpg', isFavorite: false },
@@ -40,6 +44,6 @@ export class PrincipalComponent {
   }
 
   addRoutine() {
-
+    this.router.navigate(['/crearRutina']);
   }
 }

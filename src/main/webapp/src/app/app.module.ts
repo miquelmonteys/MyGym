@@ -17,11 +17,13 @@ import {ShellComponent} from "./shell/shell.component";
 import {CdkListbox} from "@angular/cdk/listbox";
 import {MatRadioModule} from "@angular/material/radio";
 import {PrincipalComponent} from "./principal/principal.component";
+import {RoutineCardComponent} from "./routine-card/routine-card.component";
 
 
 @NgModule({
   declarations: [
     PrincipalComponent,
+    RoutineCardComponent,
     AppComponent,
     ShellComponent,
   ],

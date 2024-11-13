@@ -1,6 +1,8 @@
 package com.mygym;
 
 
+import com.mygym.models.User;
+import com.mygym.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
@@ -22,6 +24,11 @@ public class MyGym {
 
 
     private static final Logger logger = LoggerFactory.getLogger(MyGym.class);
+    private final UserRepository userRepository;
+
+    public MyGym(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     // necessari per executar operacions asincrones
     @Bean(name = "processExecutor")
@@ -40,6 +47,8 @@ public class MyGym {
     @Transactional
     public void init() {
 
+        User u = new User();
+        userRepository.save(u);
 //        Brand b1 = null;
 //        Type peelings1 = null, peelings2 = null, peelings3 = null,injectables = null,cosmeceuticals = null;
 //        Product p11 = null, p12 = null, p13 = null, p2 = null, p3=null;

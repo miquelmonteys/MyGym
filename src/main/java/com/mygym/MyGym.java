@@ -1,6 +1,8 @@
 package com.mygym;
 
 
+import com.mygym.models.User;
+import com.mygym.repository.UserRepository;
 import com.mygym.models.Exercici;
 import com.mygym.models.HistoricRutina;
 import com.mygym.models.Rutina;
@@ -29,6 +31,11 @@ import java.util.Arrays;
 @EnableAsync
 public class MyGym {
 //INIT
+
+
+    @Autowired
+    UserRepository userRepository;
+  
     private static final Logger logger = LoggerFactory.getLogger(MyGym.class);
 
     // necessari per executar operacions asincrones
@@ -56,6 +63,9 @@ public class MyGym {
     @PostConstruct
     @Transactional
     public void init() {
+
+        User u = new User();
+        userRepository.save(u);
         if (rutinaRepository.findAll().isEmpty()) {
             // Crear exercicis comuns per a les rutines
             Exercici pressBanca = new Exercici(null, "Press Banca", "Treballa el pit", "Pit");

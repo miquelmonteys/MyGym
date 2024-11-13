@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Editar Exercici</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Exercici</mat-label>
+    <input matInput [(ngModel)]="data.exercici">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Series</mat-label>
+    <input matInput [(ngModel)]="data.series" type="number">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Repeticions</mat-label>
+    <input matInput [(ngModel)]="data.repeticions" type="number">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Descans (en segons)</mat-label>
+    <input matInput [(ngModel)]="data.descans" type="number">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button (click)="guardarExercici()">Guardar</button>
+</mat-dialog-actions>

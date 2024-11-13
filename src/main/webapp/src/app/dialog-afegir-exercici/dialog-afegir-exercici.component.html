@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Agregar exercici a la rutina</h2>
+<mat-dialog-content>
+  <form [formGroup]="exerciciForm">
+    <mat-form-field>
+      <mat-label>Exercici</mat-label>
+      <input matInput type="text" formControlName="exercici" placeholder="Exercici" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Series</mat-label>
+      <input matInput type="number" formControlName="series" placeholder="Series" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Repeticions</mat-label>
+      <input matInput type="number" formControlName="repeticions" placeholder="Repeticions" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Descans (en segons)</mat-label>
+      <input matInput type="number" formControlName="descans" placeholder="Descans" />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancelar()">Cancelar</button>
+  <button mat-button (click)="onGuardar()">Guardar</button>
+</mat-dialog-actions>

@@ -1,0 +1,30 @@
+.content {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width:100% !important;
+}
+button{
+  background-color: #c3e9e8;
+  border-radius: 25px;
+
+}
+table{
+  margin-top:10px;
+  margin-bottom:10px;
+}
+tr:nth-child(odd){
+  background-color:#e0fffe;
+}
+tr:nth-child(even){
+  background-color:#d1fffd;
+}
+th, td{
+  text-align:center;
+}
+mat-icon{
+  padding: 0 !important;
+}
+td>button{
+  margin-right: 5px;
+}

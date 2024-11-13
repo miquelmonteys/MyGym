@@ -17,6 +17,10 @@ import {ShellComponent} from "./shell/shell.component";
 import {CdkListbox} from "@angular/cdk/listbox";
 import {MatRadioModule} from "@angular/material/radio";
 import {PrincipalComponent} from "./principal/principal.component";
+import {CrearRutinaComponent} from "./crear-rutina/crear-rutina.component";
+import {DialogAfegirExerciciComponent} from "./dialog-afegir-exercici/dialog-afegir-exercici.component";
+import {DialogEditarExerciciComponent} from "./dialog-editar-exercici/dialog-editar-exercici.component";
+import {DialogEliminarExerciciComponent} from "./dialog-eliminar-exercici/dialog-eliminar-exercici.component";
 
 
 @NgModule({
@@ -24,6 +28,10 @@ import {PrincipalComponent} from "./principal/principal.component";
     PrincipalComponent,
     AppComponent,
     ShellComponent,
+    CrearRutinaComponent,
+    DialogAfegirExerciciComponent,
+    DialogEditarExerciciComponent,
+    DialogEliminarExerciciComponent,
   ],
   bootstrap: [AppComponent],
   imports: [

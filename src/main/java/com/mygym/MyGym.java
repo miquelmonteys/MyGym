@@ -1,10 +1,13 @@
 package com.mygym;
 
 
+import com.mygym.models.User;
+import com.mygym.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +23,8 @@ public class MyGym {
 //INIT
 
 
+    @Autowired
+    UserRepository userRepository;
 
     private static final Logger logger = LoggerFactory.getLogger(MyGym.class);
 
@@ -39,7 +44,8 @@ public class MyGym {
     @PostConstruct
     @Transactional
     public void init() {
-
+        User u = new User();
+        userRepository.save(u);
 //        Brand b1 = null;
 //        Type peelings1 = null, peelings2 = null, peelings3 = null,injectables = null,cosmeceuticals = null;
 //        Product p11 = null, p12 = null, p13 = null, p2 = null, p3=null;

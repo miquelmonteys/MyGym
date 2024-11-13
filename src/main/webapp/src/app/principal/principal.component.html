@@ -1,1 +1,28 @@
-<p>poronguita</p>
+<div class="container">
+  <mat-toolbar class="search-toolbar">
+    <button mat-icon-button class="profile-icon">
+      <mat-icon>person</mat-icon>
+    </button>
+    <mat-form-field class="search-input" appearance="outline">
+      <mat-label>Buscar rutinas...</mat-label>
+      <input matInput [(ngModel)]="searchText" />
+    </mat-form-field>
+    <button mat-icon-button class="buttonStar" (click)="showFavorites = !showFavorites">
+      <mat-icon class="estrella {{ showFavorites ? 'colorEstrella' : '' }}">{{ showFavorites ? 'star' : 'star_outline' }}</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div class="routine-list">
+    <!-- Botón para añadir rutina -->
+    <div class="add-routine-button">
+      <button mat-raised-button color="primary" (click)="addRoutine()">
+        <mat-icon>add</mat-icon> Afegir Rutina
+      </button>
+    </div>
+    <app-routine-card
+      *ngFor="let routine of filteredRoutines"
+      [routine]="routine"
+      (favoriteToggle)="toggleFavorite(routine)"
+    ></app-routine-card>
+  </div>
+</div>

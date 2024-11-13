@@ -7,7 +7,8 @@ import {CrearRutinaComponent} from "./crear-rutina/crear-rutina.component";
 const routes: Routes = [
 
   {path: 'test', component: ShellComponent},
-  {path: '', component: CrearRutinaComponent},
+  {path: '', component: PrincipalComponent},
+  {path: 'crearRutina', component: CrearRutinaComponent},
 ];
 
 @NgModule({

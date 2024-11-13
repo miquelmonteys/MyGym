@@ -35,7 +35,7 @@ public class MyGym {
 
     @Autowired
     UserRepository userRepository;
-  
+
     private static final Logger logger = LoggerFactory.getLogger(MyGym.class);
 
     // necessari per executar operacions asincrones

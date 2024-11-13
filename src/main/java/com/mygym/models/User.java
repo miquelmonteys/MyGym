@@ -67,4 +67,6 @@ public class User extends Auditable {
     }
 
 
+    /* AFEGIR CRIDA DE FAVORITOS, AUTHENTICATION ES UNA CLASSE FETA DE JAVA (S'HA DE PASSAR.)*/
+
 }

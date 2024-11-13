@@ -1,0 +1,9 @@
+mat-form-field {
+  width: 100%; /* Asegura que el formulario ocupe todo el ancho */
+  padding-top: 10px; /* Mantén tu padding */
+}
+
+mat-dialog-content {
+  max-width: 100%;
+  overflow-x: hidden; /* Evita el scroll horizontal */
+}

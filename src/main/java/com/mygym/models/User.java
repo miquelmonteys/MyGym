@@ -17,7 +17,7 @@ import java.util.Set;
 
 @Getter
 @Setter
-public class User extends Auditable {
+public class User {
 
     @JsonSerialize(using = ToStringSerializer.class)
     @Id
@@ -71,6 +71,15 @@ public class User extends Auditable {
     }
 
     /* AFEGIR CRIDA DE FAVORITOS, AUTHENTICATION ES UNA CLASSE FETA DE JAVA (S'HA DE PASSAR.)*/
+
+    @ManyToMany
+    @JoinTable(
+            name = "favoritos_usuari",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "id_rutina")
+    )
+    private Set<Rutina> rutinesFavoritos = new HashSet<>();
+
 
 
 }

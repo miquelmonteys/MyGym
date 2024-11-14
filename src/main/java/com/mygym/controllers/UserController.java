@@ -1,5 +1,6 @@
 package com.mygym.controllers;
 
+import com.mygym.models.Rutina;
 import com.mygym.models.User;
 import com.mygym.services.UserService;
 import org.bson.types.ObjectId;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/users")
@@ -60,4 +62,34 @@ public class UserController {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }
-}
+
+
+    @GetMapping("/{id}/favorites")
+    public ResponseEntity<Set<Rutina>> getFavoriteRoutines(@PathVariable ObjectId id) {
+        User user = userService.getUserById(id).orElse(null);
+        if (user == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(user.getRutinesFavoritos());
+        }
+
+    @PostMapping("/{id}/favorites/{routineId}")
+    public ResponseEntity<Void> addFavoriteRoutine(@PathVariable ObjectId id, @PathVariable ObjectId routineId) {
+        User user = userService.getUserById(id).orElse(null);
+        Rutina rutina = userService.findRoutineById(routineId);
+        if (user == null || rutina == null) return ResponseEntity.notFound().build();
+
+        userService.addFavoriteRoutine(user, rutina);
+        return ResponseEntity.ok().build();
+    }
+
+    //No acaba de borrar el que be a ser les rutines de favoritos.
+    @DeleteMapping("/{id}/favorites/{routineId}")
+        public ResponseEntity<Void> removeFavoriteRoutine(@PathVariable ObjectId id, @PathVariable ObjectId routineId) {
+            User user = userService.getUserById(id).orElse(null);
+            Rutina rutina = userService.findRoutineById(routineId);
+            if (user == null || rutina == null) return ResponseEntity.notFound().build();
+
+            userService.removeFavoriteRoutine(user, rutina);
+            return ResponseEntity.ok().build();
+        }
+    }
+

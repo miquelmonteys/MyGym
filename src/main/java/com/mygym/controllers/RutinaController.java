@@ -26,11 +26,11 @@ public class RutinaController {
     }
 
     @PutMapping("/{id}")
-    public Rutina afegirExerciciARutina(@PathVariable String id, @RequestBody List<ObjectId> exercicis) {
+    public Rutina afegirExerciciARutina(@PathVariable ObjectId id, @RequestBody List<ObjectId> exercicis) {
         return rutinaService.afegirExercicisARutina(id, exercicis);
     }
     @PutMapping("/{id}/removeExercicis")
-    public Rutina treureExercicisDeRutina(@PathVariable String id, @RequestBody List<String> exercicis) {
+    public Rutina treureExercicisDeRutina(@PathVariable ObjectId id, @RequestBody List<String> exercicis) {
         return rutinaService.treureExercicisDeRutina(id, exercicis);
     }
     //NOU

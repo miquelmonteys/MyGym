@@ -20,13 +20,13 @@ public class RutinaService {
     public List<Rutina> getRutines() {
         return rutinaRepository.findAll();
     }
-    public Rutina afegirExercicisARutina(String id, List<ObjectId> exercicis) {
+    public Rutina afegirExercicisARutina(ObjectId id, List<ObjectId> exercicis) {
         Rutina rutina = rutinaRepository.findById(id).orElseThrow(() -> new RuntimeException("Rutina no trobada"));
         rutina.setExercicis(exercicis);
         return rutinaRepository.save(rutina);
     }
 
-    public Rutina treureExercicisDeRutina(String id, List<String> exercicis) {
+    public Rutina treureExercicisDeRutina(ObjectId id, List<String> exercicis) {
         Rutina rutina = rutinaRepository.findById(id).orElseThrow(() -> new RuntimeException("Rutina no trobada"));
         rutina.getExercicis().removeAll(exercicis);
         return rutinaRepository.save(rutina);

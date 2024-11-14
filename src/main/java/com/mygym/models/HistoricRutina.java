@@ -12,8 +12,9 @@ import java.util.List;
 
 @Document(collection = "historicRutines")
 public class HistoricRutina extends Auditable {
-    @Id
+
     @JsonSerialize(using = ToStringSerializer.class)
+    @Id
     private ObjectId id;
 
     private Date data;

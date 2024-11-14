@@ -2,6 +2,7 @@ package com.mygym.controllers;
 
 import com.mygym.models.Rutina;
 import com.mygym.services.RutinaService;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class RutinaController {
     }
 
     @PutMapping("/{id}")
-    public Rutina afegirExerciciARutina(@PathVariable String id, @RequestBody List<String> exercicis) {
+    public Rutina afegirExerciciARutina(@PathVariable String id, @RequestBody List<ObjectId> exercicis) {
         return rutinaService.afegirExercicisARutina(id, exercicis);
     }
     @PutMapping("/{id}/removeExercicis")

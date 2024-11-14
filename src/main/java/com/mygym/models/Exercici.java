@@ -13,8 +13,8 @@ import java.util.List;
 
 @Document(collection = "exercicis")
 public class Exercici extends Auditable {
-    @Id
     @JsonSerialize(using = ToStringSerializer.class)
+    @Id
     private ObjectId id;
     private String nom;
     private String descripcio;

@@ -2,6 +2,7 @@ package com.mygym.services;
 
 import com.mygym.models.Rutina;
 import com.mygym.repository.RutinaRepository;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class RutinaService {
     public List<Rutina> getRutines() {
         return rutinaRepository.findAll();
     }
-    public Rutina afegirExercicisARutina(String id, List<String> exercicis) {
+    public Rutina afegirExercicisARutina(String id, List<ObjectId> exercicis) {
         Rutina rutina = rutinaRepository.findById(id).orElseThrow(() -> new RuntimeException("Rutina no trobada"));
         rutina.setExercicis(exercicis);
         return rutinaRepository.save(rutina);

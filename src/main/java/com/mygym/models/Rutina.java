@@ -13,10 +13,11 @@ import java.util.List;
 @Document(collection = "rutines")
 public class Rutina extends Auditable {
     @JsonSerialize(using = ToStringSerializer.class)
+    @Id
     private ObjectId id;
     private String nom;
     private String descripcio;
-    private List<String> exercicis; //Guardats per ID d'exercici
+    private List<ObjectId> exercicis; //Guardats per ID d'exercici
 
     private Double descans;
 
@@ -28,7 +29,7 @@ public class Rutina extends Auditable {
     }
 
     // Constructor amb paràmetres
-    public Rutina(ObjectId id, String nom, String descripcio, List<String> exercicis, Double descans, Double duracio) {
+    public Rutina(ObjectId id, String nom, String descripcio, List<ObjectId> exercicis, Double descans, Double duracio) {
         this.id = id;
         this.nom = nom;
         this.descripcio = descripcio;
@@ -43,15 +44,15 @@ public class Rutina extends Auditable {
         this.descripcio = descripcio;
         this.exercicis = new ArrayList<>();
     }
-    public void setExercicis(List<String> exercicis) {
+    public void setExercicis(List<ObjectId> exercicis) {
         this.exercicis.addAll(exercicis);
     }
 
-    public void addExercici(String exerciciId) {
+    public void addExercici(ObjectId exerciciId) {
         this.exercicis.add(exerciciId);
     }
 
-    public List<String> getExercicis() {
+    public List<ObjectId> getExercicis() {
         return exercicis;
     }
 

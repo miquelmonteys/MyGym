@@ -1,11 +1,13 @@
 package com.mygym.models;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.mygym.security.Auditable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
-
+import org.bson.types.ObjectId;
 
 
 import java.time.ZonedDateTime;
@@ -16,8 +18,10 @@ import java.util.Set;
 @Getter
 @Setter
 public class User extends Auditable {
+
+    @JsonSerialize(using = ToStringSerializer.class)
     @Id
-    private String id;
+    private ObjectId id;
 
     @NotBlank
     @Size(max = 50)
@@ -66,7 +70,7 @@ public class User extends Auditable {
         this.password = password;
     }
 
-
     /* AFEGIR CRIDA DE FAVORITOS, AUTHENTICATION ES UNA CLASSE FETA DE JAVA (S'HA DE PASSAR.)*/
+
 
 }

@@ -80,10 +80,10 @@ public class MyGym {
             // Crear la rutina Push-Pull-Legs
             Rutina rutinaPushPullLegs = new Rutina("Push-Pull-Legs", "Rutina clàssica de divisió push-pull-legs");
             rutinaPushPullLegs.setExercicis(Arrays.asList(
-                    pressBanca.getId().toString(),
-                    pressEspatlles.getId().toString(),
-                    pesMort.getId().toString(),
-                    squat.getId().toString()
+                    pressBanca.getId(),
+                    pressEspatlles.getId(),
+                    pesMort.getId(),
+                    squat.getId()
             ));
             rutinaPushPullLegs.setDescans(1.5);
             rutinaPushPullLegs.setDuracio(1.0);
@@ -92,10 +92,10 @@ public class MyGym {
             // Crear la rutina Full Body
             Rutina rutinaFullBody = new Rutina("Full Body", "Rutina que treballa tot el cos en una sessió");
             rutinaFullBody.setExercicis(Arrays.asList(
-                    pressBanca.getId().toString(),
-                    curlBiceps.getId().toString(),
-                    squat.getId().toString(),
-                    pressEspatlles.getId().toString()
+                    pressBanca.getId(),
+                    curlBiceps.getId(),
+                    squat.getId(),
+                    pressEspatlles.getId()
             ));
             rutinaFullBody.setDescans(2.0);
             rutinaFullBody.setDuracio(1.5);
@@ -104,10 +104,10 @@ public class MyGym {
             // Crear la rutina Torso-Pierna
             Rutina rutinaTorsoPierna = new Rutina("Torso-Pierna", "Rutina dividida en sessions de torso i sessions de cames");
             rutinaTorsoPierna.setExercicis(Arrays.asList(
-                    pressBanca.getId().toString(),
-                    pressEspatlles.getId().toString(),
-                    extensioQuadriceps.getId().toString(),
-                    squat.getId().toString()
+                    pressBanca.getId(),
+                    pressEspatlles.getId(),
+                    extensioQuadriceps.getId(),
+                    squat.getId()
             ));
             rutinaTorsoPierna.setDescans(1.8);
             rutinaTorsoPierna.setDuracio(1.2);

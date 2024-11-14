@@ -3,8 +3,12 @@ package com.mygym.security.services;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.mygym.models.Role;
 import com.mygym.models.User;
+import jakarta.persistence.Id;
+import org.bson.types.ObjectId;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -12,7 +16,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class UserDetailsImpl implements UserDetails {
 	private static final long serialVersionUID = 1L;
 
-	private String id;
+	@JsonSerialize(using = ToStringSerializer.class)
+	@Id
+	private ObjectId id;
 
 	private String username;
 
@@ -24,7 +30,7 @@ public class UserDetailsImpl implements UserDetails {
 
 	private Collection<? extends GrantedAuthority> authorities;
 
-	public UserDetailsImpl(String id, String username, String email, String password) {
+	public UserDetailsImpl(ObjectId id, String username, String email, String password) {
 		this.id = id;
 		this.username = username;
 		this.email = email;
@@ -44,7 +50,7 @@ public class UserDetailsImpl implements UserDetails {
 		return authorities;
 	}
 
-	public String getId() {
+	public ObjectId getId() {
 		return id;
 	}
 

@@ -14,6 +14,7 @@ public class RutinaService {
     private RutinaRepository rutinaRepository;
 
     public Rutina creaRutina(Rutina rutina) {
+
         return rutinaRepository.save(rutina);
     }
 

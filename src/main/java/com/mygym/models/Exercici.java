@@ -37,9 +37,7 @@ public class Exercici extends Auditable {
         this.grupMuscular = grupMuscular;
     }
 
-    public <E> List<E> getSeries() {
-        return (List<E>) series;
-    }
+
 
     // Getters i setters
     public ObjectId getId() {

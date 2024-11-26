@@ -37,7 +37,41 @@ public class Exercici extends Auditable {
         this.grupMuscular = grupMuscular;
     }
 
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getDescripcio() {
+        return descripcio;
+    }
+
+    public void setDescripcio(String descripcio) {
+        this.descripcio = descripcio;
+    }
+
+    public String getGrupMuscular() {
+        return grupMuscular;
+    }
+
+    public void setGrupMuscular(String grupMuscular) {
+        this.grupMuscular = grupMuscular;
+    }
+
+    public List<Serie> getSeries() {
+        return series;
+    }
+
+    public void setSeries(List<Serie> series) {
+        this.series = series;
+    }
 
     // Getters i setters
     public ObjectId getId() {

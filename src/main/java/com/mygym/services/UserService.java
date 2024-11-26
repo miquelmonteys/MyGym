@@ -66,7 +66,7 @@ public class UserService {
 
     // Codi per a borrar de favoritos la rutina.
     public void removeFavoriteRoutine(User user, Rutina rutina) {
-        user.getRutinesFavoritos().remove(rutina); // Elimina la rutina de favoritos
+        user.getRutinesFavoritos().removeIf(r -> r.getId().equals(rutina.getId()));
         userRepository.save(user); // Guarda l'usuari actualitzat a la base de dades
     }
 

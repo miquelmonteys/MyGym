@@ -61,6 +61,14 @@ public class User {
 
     private boolean hasAccess = true;
 
+    @ManyToMany
+    @JoinTable(
+            name = "favoritos_usuari",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "id_rutina")
+    )
+    private Set<Rutina> rutinesFavoritos = new HashSet<>();
+
     public User() {
     }
 
@@ -72,13 +80,7 @@ public class User {
 
     /* AFEGIR CRIDA DE FAVORITOS, AUTHENTICATION ES UNA CLASSE FETA DE JAVA (S'HA DE PASSAR.)*/
 
-    @ManyToMany
-    @JoinTable(
-            name = "favoritos_usuari",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "id_rutina")
-    )
-    private Set<Rutina> rutinesFavoritos = new HashSet<>();
+
 
 
 

@@ -35,14 +35,14 @@ public class Exercici extends Auditable {
         ObjectId id,
         String nom,
         String descripcio,
-        String grupMuscular,
-        String codiImatgeExercici
+        String grupMuscular
+        //String codiImatgeExercici
     ) {
         this.id = id;
         this.nom = nom;
         this.descripcio = descripcio;
         this.grupMuscular = grupMuscular;
-        //this.codiImatgeExercici = codiImatgeExercici;
+        this.codiImatgeExercici = nom;
     }
 
     public void setId(ObjectId id) {

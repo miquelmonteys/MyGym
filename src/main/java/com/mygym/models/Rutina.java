@@ -4,20 +4,22 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.mygym.security.Auditable;
 import jakarta.persistence.Id;
+import java.util.ArrayList;
+import java.util.List;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Document(collection = "rutines")
 public class Rutina extends Auditable {
+
     @JsonSerialize(using = ToStringSerializer.class)
     @Id
     private ObjectId id;
-    private String nom;
+
+    private String nomRutina;
     private String descripcio;
     private List<ObjectId> exercicis; //Guardats per ID d'exercici
+    private String codiImatgeRutina; //nomRutina_1
 
     private Double descans;
 
@@ -29,21 +31,32 @@ public class Rutina extends Auditable {
     }
 
     // Constructor amb paràmetres
-    public Rutina(ObjectId id, String nom, String descripcio, List<ObjectId> exercicis, Double descans, Double duracio) {
+    public Rutina(
+        ObjectId id,
+        String nomRutina,
+        String descripcio,
+        List<ObjectId> exercicis,
+        Double descans,
+        Double duracio,
+        String codiImatgeRutina
+    ) {
         this.id = id;
-        this.nom = nom;
+        this.nomRutina = nomRutina;
         this.descripcio = descripcio;
         this.exercicis = exercicis != null ? exercicis : new ArrayList<>();
         this.descans = descans;
         this.duracio = duracio;
+        this.codiImatgeRutina = codiImatgeRutina;
     }
 
     // Constructor amb paràmetres
     public Rutina(String nom, String descripcio) {
-        this.nom = nom;
+        this.nomRutina = nom;
         this.descripcio = descripcio;
         this.exercicis = new ArrayList<>();
+        this.codiImatgeRutina = nom;
     }
+
     public void setExercicis(List<ObjectId> exercicis) {
         this.exercicis.addAll(exercicis);
     }
@@ -66,16 +79,20 @@ public class Rutina extends Auditable {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getNomRutina() {
+        return nomRutina;
     }
 
     public void setNom(String nom) {
-        this.nom = nom;
+        this.nomRutina = nom;
     }
 
     public String getDescripcio() {
         return descripcio;
+    }
+
+    public String getCodiImatge() {
+        return codiImatgeRutina;
     }
 
     public void setDescripcio(String descripcio) {
@@ -96,5 +113,9 @@ public class Rutina extends Auditable {
 
     public void setDuracio(Double duracio) {
         this.duracio = duracio;
+    }
+
+    public void setCodiImatge(String codiImatge) {
+        this.codiImatgeRutina = codiImatge;
     }
 }

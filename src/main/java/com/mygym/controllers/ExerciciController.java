@@ -3,15 +3,14 @@ package com.mygym.controllers;
 import com.mygym.models.Exercici;
 import com.mygym.models.Serie;
 import com.mygym.services.ExerciciService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/exercicis")
 public class ExerciciController {
+
     @Autowired
     private ExerciciService exerciciService;
 
@@ -26,12 +25,18 @@ public class ExerciciController {
     }
 
     @PutMapping("/{id}")
-    public Exercici afegirSeriesAExercici(@PathVariable String id, @RequestBody List<Serie> series) {
+    public Exercici afegirSeriesAExercici(
+        @PathVariable String id,
+        @RequestBody List<Serie> series
+    ) {
         return exerciciService.afegirSeriesAExercici(id, series);
     }
 
     @PutMapping("/{id}/removeSeries")
-    public Exercici treureSeriesDeExercici(@PathVariable String id, @RequestBody List<Integer> indicesSeries) {
+    public Exercici treureSeriesDeExercici(
+        @PathVariable String id,
+        @RequestBody List<Integer> indicesSeries
+    ) {
         return exerciciService.treureSeriesDeExercici(id, indicesSeries);
     }
 }

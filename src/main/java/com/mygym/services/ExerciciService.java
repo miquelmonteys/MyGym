@@ -47,4 +47,8 @@ public class ExerciciService {
         });
         return exerciciRepository.save(exercici);
     }
+
+    public List<Exercici> findByNom(String nomExercici) {
+        return exerciciRepository.findByNom(nomExercici);
+    }
 }

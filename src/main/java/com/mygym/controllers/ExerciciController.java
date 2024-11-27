@@ -16,6 +16,32 @@ public class ExerciciController {
 
     @PostMapping
     public Exercici creaExercici(@RequestBody Exercici exercici) {
+        String nomExercici = exercici.getNom();
+
+        List<Exercici> exercicisExistents = exerciciService.findByNom(
+            nomExercici
+        );
+
+        int maxNumero = 0;
+        for (Exercici ex : exercicisExistents) {
+            String codiImatge = ex.getCodiImatge();
+            if (
+                codiImatge != null && codiImatge.startsWith(nomExercici + "_")
+            ) {
+                try {
+                    int numero = Integer.parseInt(
+                        codiImatge.substring(nomExercici.length() + 1)
+                    );
+                    if (numero > maxNumero) {
+                        maxNumero = numero;
+                    }
+                } catch (NumberFormatException e) {}
+            }
+        }
+
+        String nouCodiImatge = nomExercici + "_" + (maxNumero + 1);
+        exercici.setCodiImatge(nouCodiImatge);
+
         return exerciciService.creaExercici(exercici);
     }
 

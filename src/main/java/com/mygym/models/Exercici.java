@@ -86,6 +86,10 @@ public class Exercici extends Auditable {
         return series;
     }
 
+    public void setCodiImatge(String codiImatge) {
+        this.codiImatgeExercici = codiImatge;
+    }
+
     public String getCodiImatge() {
         return codiImatgeExercici;
     }

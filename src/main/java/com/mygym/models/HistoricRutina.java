@@ -3,6 +3,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.mygym.security.Auditable;
 import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,6 +12,8 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
+@Getter
+@Setter
 @Document(collection = "historicRutines")
 public class HistoricRutina extends Auditable {
 
@@ -32,10 +36,13 @@ public class HistoricRutina extends Auditable {
         this.tempsTotal = tempsTotal;
     }
 
-    // Getters i setters
-
-    public void setData(Date data) {
+    public HistoricRutina(ObjectId id, Date data, double tempsTotal, List<Exercici> exercicis) {
+        this.id = id;
         this.data = data;
+        this.tempsTotal = tempsTotal;
+        this.exercicis = exercicis;
     }
+
+
 }
 

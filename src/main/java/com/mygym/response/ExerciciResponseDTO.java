@@ -2,6 +2,7 @@ package com.mygym.response;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.bson.types.ObjectId;
 
 @Getter
 @Setter

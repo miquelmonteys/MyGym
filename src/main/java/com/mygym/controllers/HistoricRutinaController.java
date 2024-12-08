@@ -19,7 +19,7 @@ public class HistoricRutinaController {
     }
 
     @GetMapping("/{id}")
-    public Optional<HistoricRutina> getHistòrics(@PathVariable String id) {
+    public Optional<HistoricRutina> getHistorics(@PathVariable String id) {
         return historicRutinaService.getHistorics(id);
     }
 }

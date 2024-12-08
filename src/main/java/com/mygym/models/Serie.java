@@ -1,7 +1,11 @@
 package com.mygym.models;
 
 import com.mygym.security.Auditable;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class Serie extends Auditable {
     private int repeticions;
     private double pes;

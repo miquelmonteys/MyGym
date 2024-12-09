@@ -4,7 +4,7 @@
       <mat-icon>person</mat-icon>
     </button>
     <mat-form-field class="search-input" appearance="outline">
-      <mat-label>Buscar rutinas...</mat-label>
+      <mat-label>Buscar rutines...</mat-label>
       <input matInput [(ngModel)]="searchText" />
     </mat-form-field>
     <button mat-icon-button class="buttonStar" (click)="showFavorites = !showFavorites">
@@ -12,17 +12,22 @@
     </button>
   </mat-toolbar>
 
-  <div class="routine-list">
-    <!-- Botón para añadir rutina -->
-    <div class="add-routine-button">
-      <button mat-raised-button color="primary" (click)="addRoutine()">
-        <mat-icon>add</mat-icon> Afegir Rutina
-      </button>
+  @if(this.loading==0){
+    <div class="routine-list">
+      <div class="add-routine-button">
+        <button mat-raised-button color="primary" (click)="addRoutine()">
+          <mat-icon>add</mat-icon> Afegir Rutina
+        </button>
+      </div>
+      @for(routine of filteredRoutines; track routine){
+        <app-routine-card
+          [routine]="routine"
+          (favoriteToggle)="toggleFavorite(routine)"
+        ></app-routine-card>
+      }
     </div>
-    <app-routine-card
-      *ngFor="let routine of filteredRoutines"
-      [routine]="routine"
-      (favoriteToggle)="toggleFavorite(routine)"
-    ></app-routine-card>
-  </div>
+  } @else {
+    <div>LOADING...</div>
+  }
+
 </div>

@@ -65,7 +65,7 @@ public class UserController {
 
 
     @GetMapping("/{id}/favorites")
-    public ResponseEntity<Set<Rutina>> getFavoriteRoutines(@PathVariable ObjectId id) {
+    public ResponseEntity<List<ObjectId>> getFavoriteRoutines(@PathVariable ObjectId id) {
         User user = userService.getUserById(id).orElse(null);
         if (user == null) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(user.getRutinesFavoritos());

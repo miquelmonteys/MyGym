@@ -1,6 +1,7 @@
 package com.mygym.controllers;
 
 import com.mygym.models.Rutina;
+import com.mygym.response.RutinaResponseDTO;
 import com.mygym.services.RutinaService;
 import java.util.List;
 import org.bson.types.ObjectId;
@@ -25,7 +26,7 @@ public class RutinaController {
 
         int maxNumero = 0;
         for (Rutina r : rutinesExistents) {
-            String codiImatge = r.getCodiImatge();
+            String codiImatge = r.getCodiImatgeRutina();
             if (codiImatge != null && codiImatge.startsWith(nomRutina + "_")) {
                 try {
                     int numero = Integer.parseInt(
@@ -47,6 +48,11 @@ public class RutinaController {
     @GetMapping
     public List<Rutina> getRutines() {
         return rutinaService.getRutines();
+    }
+
+    @GetMapping("/default")
+    public List<RutinaResponseDTO> getRutinesDefault() {
+        return rutinaService.getRutinesDefault();
     }
 
     @PutMapping("/{id}")

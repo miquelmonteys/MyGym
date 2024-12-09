@@ -11,9 +11,7 @@ import org.bson.types.ObjectId;
 
 
 import java.time.ZonedDateTime;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Getter
 @Setter
@@ -67,7 +65,7 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "id_rutina")
     )
-    private Set<Rutina> rutinesFavoritos = new HashSet<>();
+    private List<ObjectId> rutinesFavoritos = new ArrayList<>();
 
     public User() {
     }

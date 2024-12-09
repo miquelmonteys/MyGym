@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {RutinaModel} from "../models/rutina.model";
+import {UserService} from "../_services/user.service";
+import {RutinaService} from "../_services/rutina.service";
+import {RutinaSimpleModel} from "../models/rutinaSimple.model";
 
 interface Routine {
   name: string;
@@ -12,35 +16,36 @@ interface Routine {
   templateUrl: './principal.component.html',
   styleUrl: './principal.component.scss'
 })
-export class PrincipalComponent {
+export class PrincipalComponent implements OnInit{
   searchText: string = '';
   showFavorites: boolean = false;
+  rutinesDefault : RutinaSimpleModel[];
+  rutinesMeves : RutinaSimpleModel[];
+  loading : number=0;
 
-  constructor(private router : Router) {
+  constructor(private router : Router,
+              private rutinaService : RutinaService,
+              private userService : UserService) {
   }
 
-  routines: Routine[] = [
-    { name: 'Rutina de Pit 1', image: 'assets/images/prova1.jpg', isFavorite: false },
-    { name: 'Rutina de Pit 2', image: 'assets/images/prova1.jpg', isFavorite: true },
-    { name: 'Rutina de Pit 3', image: 'assets/images/prova1.jpg', isFavorite: true },
-    { name: 'Rutina de Pit 4', image: 'assets/images/prova1.jpg', isFavorite: false },
-    { name: 'Rutina de Pit 5', image: 'assets/images/prova1.jpg', isFavorite: false },
-    { name: 'Rutina de Pit 6', image: 'assets/images/prova1.jpg', isFavorite: true },
-    { name: 'Rutina de Pit 7', image: 'assets/images/prova1.jpg', isFavorite: false },
-    { name: 'Rutina de Pit 8', image: 'assets/images/prova1.jpg', isFavorite: false },
-    { name: 'Rutina de Pit 9', image: 'assets/images/prova1.jpg', isFavorite: true },
-    // Agrega más rutinas según sea necesario
-  ];
+  ngOnInit(): void {
+    this.loading--;
+    this.rutinaService.getDefaultRutines().subscribe((res : RutinaSimpleModel[])=>{
+      this.rutinesDefault = res;
+      console.log(this.rutinesDefault)
+      this.loading++;
+    })
+  }
 
-  get filteredRoutines(): Routine[] {
-    return this.routines.filter(routine =>
-      (!this.showFavorites || routine.isFavorite) &&
-      routine.name.toLowerCase().includes(this.searchText.toLowerCase())
+  get filteredRoutines(): RutinaSimpleModel[] {
+    return this.rutinesDefault.filter(routine =>
+      (!this.showFavorites || routine.isFavourite) &&
+      routine.nom.toLowerCase().includes(this.searchText.toLowerCase())
     );
   }
 
-  toggleFavorite(routine: Routine) {
-    routine.isFavorite = !routine.isFavorite;
+  toggleFavorite(routine: RutinaSimpleModel) {
+    routine.isFavourite = !routine.isFavourite;
   }
 
   addRoutine() {

@@ -3,6 +3,10 @@ package com.mygym.services;
 import com.mygym.models.Rutina;
 import com.mygym.repository.RutinaRepository;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import com.mygym.response.RutinaResponseDTO;
+import org.bson.types.ObjectId;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,7 +47,10 @@ public class RutinaService {
     public List<Rutina> findByNomRutina(String nomRutina) {
         return rutinaRepository.findByNomRutina(nomRutina);
     }
-    // NOU
+
+    public List<RutinaResponseDTO> getRutinesDefault() {
+        return rutinaRepository.findByIsDefaultTrue().stream().map(rutina -> new RutinaResponseDTO(rutina)).collect(Collectors.toList());
+    }
 
     /*
     public List<Rutina> searchRutines(String nom, String grupMuscular) {

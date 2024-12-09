@@ -8,6 +8,8 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface RutinaRepository extends MongoRepository<Rutina, ObjectId> {
     List<Rutina> findByNomRutina(String nomRutina);
 
+    List<Rutina> findByIsDefaultTrue();
+
     List<Rutina> findByCodiImatge(String codiImatge);
     //Metodes per obtenir Rutines
     //NOU

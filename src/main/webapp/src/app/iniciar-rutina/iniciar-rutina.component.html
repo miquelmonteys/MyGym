@@ -1,0 +1,38 @@
+<div *ngFor="let ejercicio of rutina; let i = index" class="main">
+  <h3>{{ ejercicio.exercici }}</h3>
+
+  <div *ngFor="let serie of [].constructor(ejercicio.series); let j = index" class="serie-container">
+
+    <p class="serie-label">Serie {{ j + 1 }}</p>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Repeticions</mat-label>
+      <input matInput type="text" [(ngModel)]="ejercicio.seriesRepeticions[j]" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Pes</mat-label>
+      <input matInput [(ngModel)]="ejercicio.seriesPes[j]" />
+    </mat-form-field>
+
+    <div *ngIf="ejercicio.descansos[j] === null; else descansoRegistrado">
+      <button mat-raised-button color="primary" (click)="descansar(i, j)">
+        <mat-icon>timer</mat-icon><span>Iniciar descans</span>
+      </button>
+    </div>
+    <ng-template #descansoRegistrado>
+      <p>Temps: {{ ejercicio.descansos[j] }} segundos</p>
+    </ng-template>
+
+  </div>
+</div>
+
+<div class="button-container">
+  <button mat-raised-button color="primary" class="cancelar" (click)="tornarPrincipal()">
+    <mat-icon>close</mat-icon><span>Cancel·lar Rutina</span>
+  </button>
+
+  <button mat-raised-button color="primary" (click)="acabar()">
+    <mat-icon>check</mat-icon><span>Acabar</span>
+  </button>
+</div>

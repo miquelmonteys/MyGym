@@ -4,11 +4,6 @@
   text-align: center;
   width:100% !important;
 }
-button{
-  background-color: #c3e9e8;
-  border-radius: 25px;
-
-}
 table{
   margin-top:10px;
   margin-bottom:10px;
@@ -27,4 +22,11 @@ mat-icon{
 }
 td>button{
   margin-right: 5px;
+}
+.cancelar{
+  margin-right: 5px;
+}
+
+mat-icon{
+  color: white;
 }

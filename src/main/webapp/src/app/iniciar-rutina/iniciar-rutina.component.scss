@@ -1,0 +1,44 @@
+.main{
+  padding-left: 3%;
+  padding-right: 3%;
+}
+.serie-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.serie-label {
+  margin: 0;
+  min-width: 60px;
+}
+
+.input-field {
+  flex: 1;
+  max-width: 120px;
+}
+
+.mat-icon{
+  color: white;
+  padding: 10px;
+  align-self:center;
+}
+
+
+.button-guardar {
+  height: 36px;
+  min-width: 90px;
+  padding: 0 16px;
+}
+
+button{
+  margin: 5px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}

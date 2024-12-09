@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { DialogAfegirExerciciComponent } from "../dialog-afegir-exercici/dialog-afegir-exercici.component";
 import { DialogEditarExerciciComponent } from "../dialog-editar-exercici/dialog-editar-exercici.component";
 import { DialogEliminarExerciciComponent } from "../dialog-eliminar-exercici/dialog-eliminar-exercici.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-crear-rutina',
@@ -14,8 +15,7 @@ export class CrearRutinaComponent {
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
   displayedColumns: string[] = ['exercici', 'series', 'repeticions', 'descans', 'opcions'];
 
-  constructor(private dialog: MatDialog) {}
-
+  constructor(private dialog: MatDialog, private router : Router) {}
   afegirExercici() {
     const dialogRef = this.dialog.open(DialogAfegirExerciciComponent, {
       width: '500px'
@@ -26,6 +26,13 @@ export class CrearRutinaComponent {
         this.dataSource.data = [...this.dataSource.data, result];
       }
     });
+  }
+
+  tornarPrincipal() {
+    this.router.navigate(['']);
+  }
+  anarRutina(){
+    this.router.navigate(['/iniciarRutina']);
   }
   editarExercici(exercici: any) {
     const dialogRef = this.dialog.open(DialogEditarExerciciComponent, {
@@ -48,7 +55,7 @@ export class CrearRutinaComponent {
   eliminarExercici(exercici: any) {
     const dialogRef = this.dialog.open(DialogEliminarExerciciComponent, {
       width: '500px',
-      data: { ...exercici } // Pasamos los datos del ejercicio a eliminar
+      data: { ...exercici }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -59,7 +66,7 @@ export class CrearRutinaComponent {
   }
 
   enviarRutina() {
-    const datos = this.dataSource.data;
-    console.log('Dades enviades al backend:', JSON.stringify(datos));
+    const dades = this.dataSource.data;
+    console.log('Dades enviades al backend:', JSON.stringify(dades));
   }
 }

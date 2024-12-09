@@ -22,6 +22,8 @@ import {CrearRutinaComponent} from "./crear-rutina/crear-rutina.component";
 import {DialogAfegirExerciciComponent} from "./dialog-afegir-exercici/dialog-afegir-exercici.component";
 import {DialogEditarExerciciComponent} from "./dialog-editar-exercici/dialog-editar-exercici.component";
 import {DialogEliminarExerciciComponent} from "./dialog-eliminar-exercici/dialog-eliminar-exercici.component";
+import {IniciarRutinaComponent} from "./iniciar-rutina/iniciar-rutina.component";
+import {DialogComptadorDescansComponent} from "./dialog-comptador-descans/dialog-comptador-descans.component";
 
 
 @NgModule({
@@ -34,6 +36,8 @@ import {DialogEliminarExerciciComponent} from "./dialog-eliminar-exercici/dialog
     DialogAfegirExerciciComponent,
     DialogEditarExerciciComponent,
     DialogEliminarExerciciComponent,
+    IniciarRutinaComponent,
+    DialogComptadorDescansComponent,
   ],
   bootstrap: [AppComponent],
   imports: [

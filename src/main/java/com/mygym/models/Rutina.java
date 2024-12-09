@@ -6,9 +6,14 @@ import com.mygym.security.Auditable;
 import jakarta.persistence.Id;
 import java.util.ArrayList;
 import java.util.List;
+
+import lombok.Getter;
+import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@Getter
+@Setter
 @Document(collection = "rutines")
 public class Rutina extends Auditable {
 
@@ -18,12 +23,15 @@ public class Rutina extends Auditable {
 
     private String nomRutina;
     private String descripcio;
+    @JsonSerialize(using = ToStringSerializer.class)
     private List<ObjectId> exercicis; //Guardats per ID d'exercici
     private String codiImatgeRutina; //nomRutina_1
 
     private Double descans;
 
     private Double duracio;
+
+    private Boolean isDefault;
 
     // Constructor sense paràmetres (necessari per a MongoDB i Spring Data)
     public Rutina() {

@@ -87,6 +87,7 @@ public class MyGym {
             ));
             rutinaPushPullLegs.setDescans(1.5);
             rutinaPushPullLegs.setDuracio(1.0);
+            rutinaPushPullLegs.setIsDefault(true);
             rutinaRepository.save(rutinaPushPullLegs);
 
             // Crear la rutina Full Body

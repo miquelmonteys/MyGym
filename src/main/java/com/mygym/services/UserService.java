@@ -60,13 +60,13 @@ public class UserService {
 
     // Codi per a afegir a favoritos una nova rutina.
     public void addFavoriteRoutine(User user, Rutina rutina) {
-        user.getRutinesFavoritos().add(rutina);
+        user.getRutinesFavoritos().add(rutina.getId());
         userRepository.save(user);
     }
 
     // Codi per a borrar de favoritos la rutina.
     public void removeFavoriteRoutine(User user, Rutina rutina) {
-        user.getRutinesFavoritos().removeIf(r -> r.getId().equals(rutina.getId()));
+        user.getRutinesFavoritos().removeIf(r -> r.equals(rutina.getId()));
         userRepository.save(user); // Guarda l'usuari actualitzat a la base de dades
     }
 

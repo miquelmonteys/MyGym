@@ -1,4 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {RutinaModel} from "../models/rutina.model";
+import {RutinaSimpleModel} from "../models/rutinaSimple.model";
 
 @Component({
   selector: 'app-routine-card',
@@ -6,10 +8,11 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
   styleUrl: './routine-card.component.scss'
 })
 export class RoutineCardComponent {
-  @Input() routine: { name: string; image: string; isFavorite: boolean };
+  @Input() routine: RutinaSimpleModel;
   @Output() favoriteToggle = new EventEmitter<void>();
 
   toggleFavorite() {
+    console.log(this.routine)
     this.favoriteToggle.emit();
   }
 }

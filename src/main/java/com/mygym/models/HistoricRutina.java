@@ -23,7 +23,7 @@ public class HistoricRutina extends Auditable {
 
     private Date data;
     private double tempsTotal;
-    private List<Exercici> exercicis;
+    private List<ExerciciSerie> exercicis;
 
     // Constructor sense paràmetres
     public HistoricRutina() {
@@ -36,7 +36,7 @@ public class HistoricRutina extends Auditable {
         this.tempsTotal = tempsTotal;
     }
 
-    public HistoricRutina(ObjectId id, Date data, double tempsTotal, List<Exercici> exercicis) {
+    public HistoricRutina(ObjectId id, Date data, double tempsTotal, List<ExerciciSerie> exercicis) {
         this.id = id;
         this.data = data;
         this.tempsTotal = tempsTotal;

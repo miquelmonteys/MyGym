@@ -1,13 +1,13 @@
 <mat-card class="routine-card">
   <mat-card-header>
-    <mat-card-title>{{ routine.name }}</mat-card-title>
+    <mat-card-title>{{ routine.nom }}</mat-card-title>
     <button mat-icon-button (click)="toggleFavorite()">
-      <mat-icon class="{{ routine.isFavorite ? 'starIcon' : '' }}">
-        {{ routine.isFavorite ? 'star' : 'star_outline' }}
+      <mat-icon class="{{ routine.isFavourite ? 'starIcon' : '' }}">
+        {{ routine.isFavourite ? 'star' : 'star_outline' }}
       </mat-icon>
     </button>
   </mat-card-header>
   <mat-card-content>
-    <div class="routine-image" [style.backgroundImage]="'url(' + routine.image + ')'"></div>
+    <div class="routine-image" [style.backgroundImage]="'url(' + routine.path + ')'"></div>
   </mat-card-content>
 </mat-card>

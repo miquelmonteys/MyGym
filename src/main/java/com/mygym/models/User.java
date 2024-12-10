@@ -2,7 +2,6 @@ package com.mygym.models;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
-import com.mygym.security.Auditable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
@@ -59,13 +58,9 @@ public class User {
 
     private boolean hasAccess = true;
 
-    @ManyToMany
-    @JoinTable(
-            name = "favoritos_usuari",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "id_rutina")
-    )
     private List<ObjectId> rutinesFavoritos = new ArrayList<>();
+
+    private List<ObjectId> rutinesPropies = new ArrayList<>();
 
     public User() {
     }
@@ -74,6 +69,10 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+    }
+
+    public void addRutinaPersonal(ObjectId rutinaId){
+        this.rutinesPropies.add(rutinaId);
     }
 
     /* AFEGIR CRIDA DE FAVORITOS, AUTHENTICATION ES UNA CLASSE FETA DE JAVA (S'HA DE PASSAR.)*/

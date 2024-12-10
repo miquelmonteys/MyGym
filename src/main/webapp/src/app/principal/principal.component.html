@@ -13,21 +13,43 @@
   </mat-toolbar>
 
   @if(this.loading==0){
-    <div class="routine-list">
-      <div class="add-routine-button">
-        <button mat-raised-button color="primary" (click)="addRoutine()">
-          <mat-icon>add</mat-icon> Afegir Rutina
-        </button>
+    <div class="columnes">
+      <div class="routine-list">
+        <div class="titleStatic">
+          <h1>Rutines propies</h1>
+          <div class="add-routine-button">
+            <button mat-raised-button color="primary" (click)="addRoutine()">
+              <mat-icon>add</mat-icon> Afegir Rutina
+            </button>
+          </div>
+        </div>
+
+        @for(routine of filteredPropiesRoutines; track routine){
+          <app-routine-card
+            [routine]="routine"
+            (favoriteToggle)="changeFavourite(routine)"
+          ></app-routine-card>
+        }
       </div>
-      @for(routine of filteredRoutines; track routine){
-        <app-routine-card
-          [routine]="routine"
-          (favoriteToggle)="toggleFavorite(routine)"
-        ></app-routine-card>
-      }
+
+      <div class="routine-list">
+        <div class="titleStatic">
+          <h1>Rutines default</h1>
+
+        </div>
+        @for(routine of filteredDefaultRoutines; track routine){
+          <app-routine-card
+            [routine]="routine"
+            (favoriteToggle)="changeFavourite(routine)"
+          ></app-routine-card>
+        }
+      </div>
+
     </div>
   } @else {
-    <div>LOADING...</div>
+    <div class="spinner">
+      <mat-spinner ></mat-spinner>
+    </div>
   }
 
 </div>

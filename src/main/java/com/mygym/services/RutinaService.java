@@ -1,7 +1,10 @@
 package com.mygym.services;
 
 import com.mygym.models.Rutina;
+import com.mygym.models.User;
 import com.mygym.repository.RutinaRepository;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,6 +19,8 @@ public class RutinaService {
 
     @Autowired
     private RutinaRepository rutinaRepository;
+    @Autowired
+    private UserService userService;
 
     public Rutina creaRutina(Rutina rutina) {
         return rutinaRepository.save(rutina);
@@ -51,6 +56,13 @@ public class RutinaService {
     public List<RutinaResponseDTO> getRutinesDefault() {
         return rutinaRepository.findByIsDefaultTrue().stream().map(rutina -> new RutinaResponseDTO(rutina)).collect(Collectors.toList());
     }
+
+    public List<RutinaResponseDTO> getRutinesPropies() {
+        User u = userService.getFirstUser();
+        List<Rutina> rutines = rutinaRepository.findMultipleById(u.getRutinesPropies());
+        return rutines.stream().map(rutina -> new RutinaResponseDTO(rutina)).collect(Collectors.toList());
+    }
+
 
     /*
     public List<Rutina> searchRutines(String nom, String grupMuscular) {

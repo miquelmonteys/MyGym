@@ -23,7 +23,6 @@ public class Rutina extends Auditable {
 
     private String nomRutina;
     private String descripcio;
-    @JsonSerialize(using = ToStringSerializer.class)
     private List<ObjectId> exercicis; //Guardats per ID d'exercici
     private String codiImatgeRutina; //nomRutina_1
 

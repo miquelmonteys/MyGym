@@ -35,6 +35,23 @@
   width: 100%;
   max-height: calc(100vh - 80px);
   max-width: 800px;
+
+}
+.titleStatic{
+  position: sticky;
+  top: 0;
+  z-index: 1; /* Asegúrate de que esté por encima de otros elementos */
+  width: 100%;
+  background-color: #ECF9FA; /* O el color de fondo que tengas */
+
+  h1 {
+    align-self: center;
+    font-weight: 550;
+    padding: 10px;
+    text-align: center;
+    font-weight: 550;
+
+  }
 }
 
 .favButton{
@@ -68,3 +85,12 @@
   font-weight: bold;
   font-size: 16px;
 }
+
+.columnes{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+}
+
+

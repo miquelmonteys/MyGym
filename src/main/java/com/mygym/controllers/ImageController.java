@@ -31,9 +31,9 @@ public class ImageController {
     private RutinaRepository rutinaRepository;
 
     @GetMapping("/exercici/{id}")
-    public ResponseEntity<Resource> getExerciciImage(@PathVariable String nom) {
+    public ResponseEntity<Resource> getExerciciImage(@PathVariable String id) {
         Exercici exercici = exerciciRepository
-            .findById(nom)
+            .findById(id)
             .stream()
             .findFirst()
             .orElse(null);

@@ -71,7 +71,7 @@ public class MyGym {
             User u = new User();
             userRepository.save(u);
         }
-        if (rutinaRepository.findAll().isEmpty()) {
+        if (rutinaRepository.findAll().isEmpty() && exerciciRepository.findAll().isEmpty()) {
             // Crear exercicis comuns per a les rutines
             Exercici pressBanca = new Exercici(null, "Press Banca", "Treballa el pit", "Pit");
             Exercici curlBiceps = new Exercici(null, "Curl Biceps", "Treballa els bíceps", "Braços");
@@ -85,9 +85,9 @@ public class MyGym {
             // Crear la rutina Push-Pull-Legs
             Rutina rutinaPushPullLegs = new Rutina("Push-Pull-Legs", "Rutina clàssica de divisió push-pull-legs");
             rutinaPushPullLegs.setExercicis(Arrays.asList(
+                    pesMort.getId(),
                     pressBanca.getId(),
                     pressEspatlles.getId(),
-                    pesMort.getId(),
                     squat.getId()
             ));
             rutinaPushPullLegs.setDescans(1.5);
@@ -98,8 +98,8 @@ public class MyGym {
             // Crear la rutina Full Body
             Rutina rutinaFullBody = new Rutina("Full Body", "Rutina que treballa tot el cos en una sessió");
             rutinaFullBody.setExercicis(Arrays.asList(
-                    pressBanca.getId(),
                     curlBiceps.getId(),
+                    pressBanca.getId(),
                     squat.getId(),
                     pressEspatlles.getId()
             ));
@@ -111,9 +111,9 @@ public class MyGym {
             // Crear la rutina Torso-Pierna
             Rutina rutinaTorsoPierna = new Rutina("Torso-Pierna", "Rutina dividida en sessions de torso i sessions de cames");
             rutinaTorsoPierna.setExercicis(Arrays.asList(
+                    extensioQuadriceps.getId(),
                     pressBanca.getId(),
                     pressEspatlles.getId(),
-                    extensioQuadriceps.getId(),
                     squat.getId()
             ));
             rutinaTorsoPierna.setDescans(1.8);
@@ -123,9 +123,9 @@ public class MyGym {
 
             // Crear la rutina Push-Pull-Legs
             Rutina rutinaPPL2 = new Rutina("Push-Pull-Legs2", "Rutina clàssica de divisió push-pull-legs");
-            rutinaPushPullLegs.setExercicis(Arrays.asList(
-                    pressBanca.getId(),
+            rutinaPPL2.setExercicis(Arrays.asList(
                     pressEspatlles.getId(),
+                    pressBanca.getId(),
                     pesMort.getId(),
                     squat.getId()
             ));

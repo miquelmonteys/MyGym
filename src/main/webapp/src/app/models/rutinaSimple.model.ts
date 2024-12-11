@@ -4,6 +4,6 @@ export class RutinaSimpleModel {
   descripcio : string;
   imagePath : string;
   isFavourite : boolean;
-  exercisis : string[];
+  exercisis: string[] = []; // Inicializado como un array vacío
   path : string = "assets/images/prova1.jpg";
 }

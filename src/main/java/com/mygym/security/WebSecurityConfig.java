@@ -66,6 +66,7 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
                                 .requestMatchers("/api/auth/**").permitAll()
                                 .requestMatchers("/api/users/**").permitAll()
                                 .requestMatchers("/api/rutines/**").permitAll()
+                                .requestMatchers("/api/historics/**").permitAll()
                                 .requestMatchers("/api/exercicis/**").permitAll()
                                 .requestMatchers("/api/images/**").permitAll()
                                 .requestMatchers("/api/product/**").permitAll()
@@ -83,6 +84,7 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
                                 .requestMatchers("/api/cap/**").hasAnyRole("RHG_CAP")
                                 .requestMatchers("/api/encarregat/**").hasAnyRole("RHG_ENCARREGAT")
                                 .anyRequest().hasAnyRole("RHG_RRHH", "RHG_ADMIN")
+
                 );
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();

@@ -1,29 +1,32 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatTableDataSource } from '@angular/material/table';
 import { DialogAfegirExerciciComponent } from "../dialog-afegir-exercici/dialog-afegir-exercici.component";
 import { DialogEditarExerciciComponent } from "../dialog-editar-exercici/dialog-editar-exercici.component";
 import { DialogEliminarExerciciComponent } from "../dialog-eliminar-exercici/dialog-eliminar-exercici.component";
-import {Router} from "@angular/router";
-import {ExerciciService} from "../_services/exercici.service";
+import { Router } from "@angular/router";
+import { ExerciciService } from "../_services/exercici.service";
+import {RutinaModel} from "../models/rutina.model";
+import {RutinaService} from "../_services/rutina.service";
 
 @Component({
   selector: 'app-crear-rutina',
   templateUrl: './crear-rutina.component.html',
   styleUrls: ['./crear-rutina.component.scss']
 })
-export class CrearRutinaComponent implements OnInit{
-  dataSource: MatTableDataSource<any> = new MatTableDataSource();
-  displayedColumns: string[] = ['exercici', 'repeticions', 'opcions'];
-  exercicis: any;
+export class CrearRutinaComponent implements OnInit {
+  nomRutina: string = '';
+  exercicis: string[] = [];
+  totsExercicis: Object = [];
+  seriess: number[] = [];
+  displayedColumns: string[] = ['exercici', 'series', 'opcions'];
+  dataSource: { exercici: any, series: number }[] = [];
+  constructor(private dialog: MatDialog, private router: Router, private exerciciService: ExerciciService, private rutinaService: RutinaService) {}
 
-  constructor(private dialog: MatDialog, private router : Router, private exerciciService: ExerciciService) {}
-
-  ngOnInit(){
+  ngOnInit() {
     this.exerciciService.getAllExercicis().subscribe({
       next: (data) => {
-        this.exercicis = data;
         console.log(data);
+        this.totsExercicis = data;
       },
       error: (err) => {
         console.error('Error al obtener exercici', err);
@@ -31,53 +34,82 @@ export class CrearRutinaComponent implements OnInit{
     });
   }
 
-  afegirExercici() {
-    const dialogRef = this.dialog.open(DialogAfegirExerciciComponent, {
-      width: '500px',
-      data: { exercicis: this.exercicis }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.dataSource.data = [...this.dataSource.data, result];
-      }
-    });
-  }
-
   tornarPrincipal() {
     this.router.navigate(['']);
   }
-  editarExercici(exercici: any) {
-    const dialogRef = this.dialog.open(DialogEditarExerciciComponent, {
+
+  afegirExercici() {
+    const dialogRef = this.dialog.open(DialogAfegirExerciciComponent, {
       width: '500px',
-      data: { ...exercici, exercicis: this.exercicis  }
+      data: { totsExercicis: this.totsExercicis }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        const index = this.dataSource.data.findIndex(item => item === exercici);
-        if (index !== -1) {
-          this.dataSource.data[index] = result;
-          this.dataSource.data = [...this.dataSource.data];
-        }
+        this.exercicis.push(result.exercici.id);
+        this.seriess.push(result.series);
+        this.dataSource = [...this.dataSource, {
+          exercici: result.exercici.nom,
+          series: result.series
+        }];
       }
     });
   }
-  eliminarExercici(exercici: any) {
+
+  editarExercici(index: number) {
+    const dialogRef = this.dialog.open(DialogEditarExerciciComponent, {
+      width: '500px',
+      data: {
+        totsExercicis: this.totsExercicis,
+        exercici: this.dataSource[index].exercici,
+        series: this.dataSource[index].series,
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.exercicis[index] = result.exercici.id;
+        this.seriess[index] = result.series;
+
+        this.dataSource[index] = {
+          exercici: result.exercici.nom,
+          series: result.series
+        };
+        this.dataSource = [...this.dataSource];
+
+      }
+    });
+  }
+
+  eliminarExercici(index: number) {
     const dialogRef = this.dialog.open(DialogEliminarExerciciComponent, {
       width: '500px',
-      data: { ...exercici }
+      data: {
+        exercici: this.dataSource[index].exercici,
+        series: this.dataSource[index].series
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'confirmado') {
-        this.dataSource.data = this.dataSource.data.filter(item => item !== exercici);
+        this.exercicis.splice(index, 1);
+        this.seriess.splice(index, 1);
+        this.dataSource.splice(index, 1);
+        this.dataSource = [...this.dataSource];
       }
     });
   }
 
+
   enviarRutina() {
-    const dades = this.dataSource.data;
-    console.log('Dades enviades al backend:', JSON.stringify(dades));
+
+    const rutina: RutinaModel = {
+      nomRutina: this.nomRutina,
+      exercicis: this.exercicis,
+      series: this.seriess,
+    };
+    this.rutinaService.postRutina(rutina).subscribe();
+    this.tornarPrincipal();
+
   }
 }

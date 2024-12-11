@@ -16,6 +16,8 @@ public interface RutinaRepository extends MongoRepository<Rutina, ObjectId> {
 
     List<Rutina> findMultipleById(List<ObjectId> id);
 
+    List<Rutina> findAllByIdIn(List<ObjectId> id);
+
     List<Rutina> findByCodiImatge(String codiImatge);
     //Metodes per obtenir Rutines
     //NOU

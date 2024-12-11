@@ -1,7 +1,6 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {RutinaModel} from "../models/rutina.model";
-import {Observable} from "rxjs";
 
 
 
@@ -25,5 +24,9 @@ export class RutinaService {
 
   getRutina(id: string){
     return this.http.get(`${this.urlRutines}/${id}`);
+  }
+
+  postRutina(rutina: RutinaModel){
+    return this.http.post(`${this.urlRutines}`, rutina);
   }
 }

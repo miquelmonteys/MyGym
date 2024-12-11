@@ -1,23 +1,24 @@
-<h2 mat-dialog-title>Afegir Exercici</h2>
-<mat-dialog-content>
-  <form [formGroup]="exerciciForm">
-    <mat-form-field appearance="fill">
-      <mat-label>Exercici</mat-label>
-      <mat-select formControlName="exercici">
-        <mat-option *ngFor="let exercici of exercicis" [value]="exercici.nom">
-          {{ exercici.nom }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+<div>
+  <h2 mat-dialog-title>Afegir Exercici</h2>
+  <mat-dialog-content>
+    <form [formGroup]="exerciciForm">
+      <mat-form-field appearance="fill">
+        <mat-label>Exercici</mat-label>
+        <mat-select formControlName="exercici">
+          <mat-option *ngFor="let exercici of totsExercicis" [value]="exercici">
+            {{ exercici.nom }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Repeticions</mat-label>
-      <input matInput type="number" formControlName="repeticions" />
-    </mat-form-field>
-
-  </form>
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button (click)="onCancelar()">Cancelar</button>
-  <button mat-button color="primary" (click)="onGuardar()">Guardar</button>
-</mat-dialog-actions>
+      <mat-form-field appearance="fill">
+        <mat-label>Series</mat-label>
+        <input matInput type="number" formControlName="series" />
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button (click)="onCancelar()">Cancelar</button>
+    <button mat-button color="primary" (click)="onGuardar()">Guardar</button>
+  </mat-dialog-actions>
+</div>

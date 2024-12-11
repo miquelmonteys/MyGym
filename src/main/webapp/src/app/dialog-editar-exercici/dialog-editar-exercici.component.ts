@@ -10,6 +10,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class DialogEditarExerciciComponent {
   exerciciForm: FormGroup;
   exercicis: any[] = [];
+  totsExercicis: any[] = [];
 
 
   constructor(
@@ -17,10 +18,12 @@ export class DialogEditarExerciciComponent {
     public dialogRef: MatDialogRef<DialogEditarExerciciComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.exercicis = data.exercicis || [];
+    this.totsExercicis = data.totsExercicis || [];
+    const exerciciSeleccionado = this.totsExercicis.find(ex => ex.nom === data.exercici);
+
     this.exerciciForm = this.fb.group({
-      exercici: [data.exercici, Validators.required],
-      repeticions: [data.repeticions, Validators.required]
+      exercici: [exerciciSeleccionado, Validators.required],
+      series: [data.series, Validators.required]
     });
   }
 

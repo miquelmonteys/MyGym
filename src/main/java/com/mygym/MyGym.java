@@ -26,6 +26,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.List;
 
 @SpringBootApplication
 @EnableScheduling
@@ -82,6 +83,7 @@ public class MyGym {
 
             exerciciRepository.saveAll(Arrays.asList(pressBanca, curlBiceps, pressEspatlles, pesMort, extensioQuadriceps, squat));
 
+            List<Integer> series = Arrays.asList(4,4,4,4);
             // Crear la rutina Push-Pull-Legs
             Rutina rutinaPushPullLegs = new Rutina("Push-Pull-Legs", "Rutina clàssica de divisió push-pull-legs");
             rutinaPushPullLegs.setExercicis(Arrays.asList(
@@ -90,8 +92,7 @@ public class MyGym {
                     pressEspatlles.getId(),
                     squat.getId()
             ));
-            rutinaPushPullLegs.setDescans(1.5);
-            rutinaPushPullLegs.setDuracio(1.0);
+            rutinaPushPullLegs.setSeries(series);
             rutinaPushPullLegs.setIsDefault(true);
             rutinaRepository.save(rutinaPushPullLegs);
 
@@ -103,8 +104,7 @@ public class MyGym {
                     squat.getId(),
                     pressEspatlles.getId()
             ));
-            rutinaFullBody.setDescans(2.0);
-            rutinaFullBody.setDuracio(1.5);
+            rutinaFullBody.setSeries(series);
             rutinaFullBody.setIsDefault(true);
             rutinaRepository.save(rutinaFullBody);
 
@@ -116,8 +116,7 @@ public class MyGym {
                     pressEspatlles.getId(),
                     squat.getId()
             ));
-            rutinaTorsoPierna.setDescans(1.8);
-            rutinaTorsoPierna.setDuracio(1.2);
+            rutinaTorsoPierna.setSeries(series);
             rutinaTorsoPierna.setIsDefault(true);
             rutinaRepository.save(rutinaTorsoPierna);
 
@@ -129,8 +128,7 @@ public class MyGym {
                     pesMort.getId(),
                     squat.getId()
             ));
-            rutinaPushPullLegs.setDescans(1.5);
-            rutinaPushPullLegs.setDuracio(1.0);
+            rutinaPPL2.setSeries(series);
             rutinaRepository.save(rutinaPPL2);
             User u = userService.getFirstUser();
             u.addRutinaPersonal(rutinaPPL2.getId());

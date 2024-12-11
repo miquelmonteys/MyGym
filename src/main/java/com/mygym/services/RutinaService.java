@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.mygym.repository.UserRepository;
+import com.mygym.request.RutinaRequestDTO;
 import com.mygym.response.RutinaResponseDTO;
 import org.bson.types.ObjectId;
 import org.bson.types.ObjectId;
@@ -22,9 +24,16 @@ public class RutinaService {
     private RutinaRepository rutinaRepository;
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserRepository userRepository;
 
-    public Rutina creaRutina(Rutina rutina) {
-        return rutinaRepository.save(rutina);
+    public Rutina creaRutina(RutinaRequestDTO rutina) {
+        Rutina r = new Rutina(rutina);
+        Rutina r2 = rutinaRepository.save(r);
+        User u = userService.getFirstUser();
+        u.addRutinaPersonal(r.getId());
+        userRepository.save(u);
+        return r2;
     }
 
     public List<Rutina> getRutines() {
@@ -64,7 +73,7 @@ public class RutinaService {
 
     public List<RutinaResponseDTO> getRutinesPropies() {
         User u = userService.getFirstUser();
-        List<Rutina> rutines = rutinaRepository.findMultipleById(u.getRutinesPropies());
+        List<Rutina> rutines = rutinaRepository.findAllByIdIn(u.getRutinesPropies());
         return rutines.stream().map(rutina -> new RutinaResponseDTO(rutina)).collect(Collectors.toList());
     }
 

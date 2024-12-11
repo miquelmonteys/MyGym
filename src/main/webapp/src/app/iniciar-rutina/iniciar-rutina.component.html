@@ -12,7 +12,7 @@
   <div *ngFor="let serie of exercici.series; let j = index" class="serie-container">
     <p class="serie-label">Serie {{ j + 1 }}</p>
 
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="fill">
       <mat-label>Repeticions</mat-label>
       <input
         matInput
@@ -22,13 +22,13 @@
       />
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="fill">
       <mat-label>Pes</mat-label>
       <input
         matInput
         type="text"
-        [(ngModel)]="exercici.series[j].weight"
-        name="weight_{{ i }}_{{ j }}"
+        [(ngModel)]="exercici.series[j].pes"
+        name="pes_{{ i }}_{{ j }}"
       />
     </mat-form-field>
 
@@ -38,7 +38,7 @@
       </button>
     </div>
     <ng-template #descansoRegistrado>
-      <p>Temps: {{ exercici.descansos[j] }} segundos</p>
+      <p>Temps: {{ exercici.descansos[j] }} segons</p>
     </ng-template>
   </div>
 </div>

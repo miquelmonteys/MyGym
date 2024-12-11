@@ -2,6 +2,7 @@ package com.mygym.models;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import com.mygym.request.RutinaRequestDTO;
 import com.mygym.security.Auditable;
 import jakarta.persistence.Id;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class Rutina extends Auditable {
     private String nomRutina;
     private String descripcio;
     private List<ObjectId> exercicis; //Guardats per ID d'exercici
+    private List<Integer> series;
     private String codiImatgeRutina; //nomRutina_1
 
     private Double descans;
@@ -43,6 +45,7 @@ public class Rutina extends Auditable {
         String nomRutina,
         String descripcio,
         List<ObjectId> exercicis,
+        List<Integer> series,
         Double descans,
         Double duracio,
         String codiImatgeRutina
@@ -51,6 +54,7 @@ public class Rutina extends Auditable {
         this.nomRutina = nomRutina;
         this.descripcio = descripcio;
         this.exercicis = exercicis != null ? exercicis : new ArrayList<>();
+        this.series = series != null ? series : new ArrayList<>();
         this.descans = descans;
         this.duracio = duracio;
         this.codiImatgeRutina = codiImatgeRutina;
@@ -61,11 +65,23 @@ public class Rutina extends Auditable {
         this.nomRutina = nom;
         this.descripcio = descripcio;
         this.exercicis = new ArrayList<>();
+        this.series = new ArrayList<>();
         this.codiImatgeRutina = nom;
+    }
+
+    public Rutina(RutinaRequestDTO rutina) {
+        this.nomRutina = rutina.getNomRutina();
+        this.exercicis = rutina.getExercicis();
+        this.series = rutina.getSeries();
+        this.isDefault = false;
     }
 
     public void setExercicis(List<ObjectId> exercicis) {
         this.exercicis.addAll(exercicis);
+    }
+
+    public void setSeries(List<Integer> series) {
+        this.series.addAll(series);
     }
 
     public void addExercici(ObjectId exerciciId) {

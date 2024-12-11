@@ -20,7 +20,7 @@ public class RutinaResponseDTO {
     private String descripcio;
     private String imagePath;
     private List<String> exercicis;
-    private String path = "assets/images/prova1.jpg";
+    private List<Integer> series;
     private Boolean isFavourite;
 
 
@@ -32,5 +32,6 @@ public class RutinaResponseDTO {
         this.descripcio=rutina.getDescripcio();
         this.imagePath=rutina.getCodiImatge();
         this.exercicis=rutina.getExercicis().stream().map(ObjectId::toString).collect(Collectors.toList());
+        this.series=rutina.getSeries();
     }
 }

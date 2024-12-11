@@ -8,6 +8,8 @@ import lombok.Setter;
 import org.bson.types.ObjectId;
 
 import java.nio.file.Path;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -17,6 +19,7 @@ public class RutinaResponseDTO {
     private String nom;
     private String descripcio;
     private String imagePath;
+    private List<String> exercisis;
     private String path = "assets/images/prova1.jpg";
     private Boolean isFavourite;
 
@@ -28,5 +31,6 @@ public class RutinaResponseDTO {
         this.nom=rutina.getNomRutina();
         this.descripcio=rutina.getDescripcio();
         this.imagePath=rutina.getCodiImatge();
+        this.exercisis = rutina.getExercicis().stream().map(ObjectId::toString).collect(Collectors.toList());
     }
 }

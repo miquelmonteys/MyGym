@@ -70,5 +70,7 @@ public class UserService {
         userRepository.save(user); // Guarda l'usuari actualitzat a la base de dades
     }
 
-
+    public User getFirstUser() {
+        return userRepository.findAll().stream().findFirst().orElse(null);
+    }
 }

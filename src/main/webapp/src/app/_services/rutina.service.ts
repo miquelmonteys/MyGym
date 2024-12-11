@@ -18,4 +18,9 @@ export class RutinaService {
   getDefaultRutines() {
     return this.http.get(`${this.urlRutines}/default`);
   }
+
+  getPropiesRutines(){
+    return this.http.get(`${this.urlRutines}/propies`);
+  }
+
 }

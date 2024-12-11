@@ -10,6 +10,7 @@ import com.mygym.models.Serie;
 import com.mygym.repository.ExerciciRepository;
 import com.mygym.repository.HistoricRutinaRepository;
 import com.mygym.repository.RutinaRepository;
+import com.mygym.services.UserService;
 import jakarta.annotation.PostConstruct;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
@@ -37,6 +38,8 @@ public class MyGym {
     UserRepository userRepository;
 
     private static final Logger logger = LoggerFactory.getLogger(MyGym.class);
+    @Autowired
+    private UserService userService;
 
     // necessari per executar operacions asincrones
     @Bean(name = "processExecutor")
@@ -64,8 +67,10 @@ public class MyGym {
     @Transactional
     public void init() {
 
-        User u = new User();
-        userRepository.save(u);
+        if(userRepository.findAll().isEmpty()){
+            User u = new User();
+            userRepository.save(u);
+        }
         if (rutinaRepository.findAll().isEmpty()) {
             // Crear exercicis comuns per a les rutines
             Exercici pressBanca = new Exercici(null, "Press Banca", "Treballa el pit", "Pit");
@@ -100,6 +105,7 @@ public class MyGym {
             ));
             rutinaFullBody.setDescans(2.0);
             rutinaFullBody.setDuracio(1.5);
+            rutinaFullBody.setIsDefault(true);
             rutinaRepository.save(rutinaFullBody);
 
             // Crear la rutina Torso-Pierna
@@ -112,7 +118,24 @@ public class MyGym {
             ));
             rutinaTorsoPierna.setDescans(1.8);
             rutinaTorsoPierna.setDuracio(1.2);
+            rutinaTorsoPierna.setIsDefault(true);
             rutinaRepository.save(rutinaTorsoPierna);
+
+            // Crear la rutina Push-Pull-Legs
+            Rutina rutinaPPL2 = new Rutina("Push-Pull-Legs2", "Rutina clàssica de divisió push-pull-legs");
+            rutinaPushPullLegs.setExercicis(Arrays.asList(
+                    pressBanca.getId(),
+                    pressEspatlles.getId(),
+                    pesMort.getId(),
+                    squat.getId()
+            ));
+            rutinaPushPullLegs.setDescans(1.5);
+            rutinaPushPullLegs.setDuracio(1.0);
+            rutinaRepository.save(rutinaPPL2);
+            User u = userService.getFirstUser();
+            u.addRutinaPersonal(rutinaPPL2.getId());
+            userRepository.save(u);
+
         }
     }
 

@@ -11,12 +11,20 @@ import {Observable} from "rxjs";
 
 export class UserService {
 
-  urlProduct: string = 'api/users'
-  idUserMONGO: string = '6755ea79d616277df3efe13f'
+  urlUsers: string = 'api/users'
 
   constructor(private http: HttpClient) { }
 
   getMyFavourites() : Observable<Object>{
-    return this.http.get(`${this.urlProduct}/${this.idUserMONGO}/myFavouriteProducts`)
+    return this.http.get(`${this.urlUsers}/favorites`)
   }
+
+  addFavourite(id : string) : Observable<Object>{
+    return this.http.post(`${this.urlUsers}/favorites/${id}`,null)
+  }
+
+  deleteFavourite(id : string) : Observable<Object>{
+    return this.http.delete(`${this.urlUsers}/favorites/${id}`)
+  }
+
 }

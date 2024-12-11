@@ -55,6 +55,11 @@ public class RutinaController {
         return rutinaService.getRutinesDefault();
     }
 
+    @GetMapping("/propies")
+    public List<RutinaResponseDTO> getRutinesPropies() {
+        return rutinaService.getRutinesPropies();
+    }
+
     @PutMapping("/{id}")
     public Rutina afegirExerciciARutina(
         @PathVariable ObjectId id,

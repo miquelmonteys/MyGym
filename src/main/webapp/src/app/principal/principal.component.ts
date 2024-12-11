@@ -69,6 +69,8 @@ export class PrincipalComponent implements OnInit{
   }
 
   changeFavourite(rutina: RutinaSimpleModel) {
+    console.log(rutina)
+    console.log(this.rutinesDefault)
     if (rutina.isFavourite == false) {
       this.rutinesDefault[this.rutinesDefault.indexOf(rutina)].isFavourite=false;
       this.rutinesMeves[this.rutinesMeves.indexOf(rutina)].isFavourite=false;

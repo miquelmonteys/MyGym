@@ -7,6 +7,7 @@ import {HttpClient} from "@angular/common/http";
 export class ExerciciService {
 
   urlExercici: string = 'api/exercicis'
+  urlImatges: string = 'api/images'
 
   constructor(private http: HttpClient) { }
 
@@ -16,5 +17,9 @@ export class ExerciciService {
 
   getAllExercicis(){
     return this.http.get(`${this.urlExercici}`);
+  }
+
+  getImatge(id : string){
+    return this.http.get(`${this.urlImatges}/exercici/${id}`, {responseType: 'blob'});
   }
 }

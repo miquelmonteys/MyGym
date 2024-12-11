@@ -42,7 +42,7 @@ public class Exercici extends Auditable {
         this.nom = nom;
         this.descripcio = descripcio;
         this.grupMuscular = grupMuscular;
-        this.codiImatgeExercici = nom;
+        this.codiImatgeExercici = nom.replaceAll("\\s+", "");;
     }
 
     public void setId(ObjectId id) {

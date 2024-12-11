@@ -4,6 +4,8 @@ import com.mygym.models.Rutina;
 import com.mygym.response.RutinaResponseDTO;
 import com.mygym.services.RutinaService;
 import java.util.List;
+import java.util.Optional;
+
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -59,6 +61,8 @@ public class RutinaController {
     public List<RutinaResponseDTO> getRutinesPropies() {
         return rutinaService.getRutinesPropies();
     }
+    @GetMapping("/{id}")
+    public Optional<RutinaResponseDTO> getRutina(@PathVariable ObjectId id) { return rutinaService.findByIdRutina(id); }
 
     @PutMapping("/{id}")
     public Rutina afegirExerciciARutina(

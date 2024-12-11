@@ -1,9 +1,13 @@
 package com.mygym.controllers;
 
 import com.mygym.models.Exercici;
+import com.mygym.models.Rutina;
 import com.mygym.models.Serie;
 import com.mygym.services.ExerciciService;
 import java.util.List;
+import java.util.Optional;
+
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,6 +53,9 @@ public class ExerciciController {
     public List<Exercici> getExercicis() {
         return exerciciService.getExercicis();
     }
+
+    @GetMapping("/{id}")
+    public Optional<Exercici> getExercici(@PathVariable ObjectId id) { return exerciciService.findByIdExercici(id); }
 
     @PutMapping("/{id}")
     public Exercici afegirSeriesAExercici(

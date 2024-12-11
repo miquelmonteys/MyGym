@@ -23,4 +23,7 @@ export class RutinaService {
     return this.http.get(`${this.urlRutines}/propies`);
   }
 
+  getRutina(id: string){
+    return this.http.get(`${this.urlRutines}/${id}`);
+  }
 }

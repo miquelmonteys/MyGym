@@ -6,6 +6,7 @@ import com.mygym.repository.RutinaRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.mygym.response.RutinaResponseDTO;
@@ -51,6 +52,10 @@ public class RutinaService {
 
     public List<Rutina> findByNomRutina(String nomRutina) {
         return rutinaRepository.findByNomRutina(nomRutina);
+    }
+
+    public Optional<RutinaResponseDTO> findByIdRutina(ObjectId id) {
+        return Optional.of(new RutinaResponseDTO(rutinaRepository.findById(id).get()));
     }
 
     public List<RutinaResponseDTO> getRutinesDefault() {

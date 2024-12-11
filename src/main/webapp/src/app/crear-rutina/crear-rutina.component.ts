@@ -1,24 +1,40 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { DialogAfegirExerciciComponent } from "../dialog-afegir-exercici/dialog-afegir-exercici.component";
 import { DialogEditarExerciciComponent } from "../dialog-editar-exercici/dialog-editar-exercici.component";
 import { DialogEliminarExerciciComponent } from "../dialog-eliminar-exercici/dialog-eliminar-exercici.component";
 import {Router} from "@angular/router";
+import {ExerciciService} from "../_services/exercici.service";
 
 @Component({
   selector: 'app-crear-rutina',
   templateUrl: './crear-rutina.component.html',
   styleUrls: ['./crear-rutina.component.scss']
 })
-export class CrearRutinaComponent {
+export class CrearRutinaComponent implements OnInit{
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
-  displayedColumns: string[] = ['exercici', 'series', 'repeticions', 'descans', 'opcions'];
+  displayedColumns: string[] = ['exercici', 'repeticions', 'opcions'];
+  exercicis: any;
 
-  constructor(private dialog: MatDialog, private router : Router) {}
+  constructor(private dialog: MatDialog, private router : Router, private exerciciService: ExerciciService) {}
+
+  ngOnInit(){
+    this.exerciciService.getAllExercicis().subscribe({
+      next: (data) => {
+        this.exercicis = data;
+        console.log(data);
+      },
+      error: (err) => {
+        console.error('Error al obtener exercici', err);
+      },
+    });
+  }
+
   afegirExercici() {
     const dialogRef = this.dialog.open(DialogAfegirExerciciComponent, {
-      width: '500px'
+      width: '500px',
+      data: { exercicis: this.exercicis }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -31,15 +47,10 @@ export class CrearRutinaComponent {
   tornarPrincipal() {
     this.router.navigate(['']);
   }
-  anarRutina(){
-    this.router.navigate(['/iniciarRutina']);
-  }
   editarExercici(exercici: any) {
     const dialogRef = this.dialog.open(DialogEditarExerciciComponent, {
       width: '500px',
-      maxWidth: '100%',
-      autoFocus: false,
-      data: { ...exercici }
+      data: { ...exercici, exercicis: this.exercicis  }
     });
 
     dialogRef.afterClosed().subscribe(result => {

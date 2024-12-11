@@ -13,15 +13,6 @@ import java.nio.file.Paths;
 @Getter
 public class FileStorageService {
 
-    private final Path download;
-    private final Path googleapi;
 
-    @Autowired
-    public FileStorageService(FileStorageProperties fileStorageProperties) {
-        this.download = Paths.get(fileStorageProperties.getDownload())
-                .toAbsolutePath().normalize();
-        this.googleapi = Paths.get(fileStorageProperties.getGoogleapi())
-                .toAbsolutePath().normalize();
-    }
 
 }

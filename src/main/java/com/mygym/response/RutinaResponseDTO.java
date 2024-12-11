@@ -19,7 +19,7 @@ public class RutinaResponseDTO {
     private String nom;
     private String descripcio;
     private String imagePath;
-    private List<String> exercisis;
+    private List<String> exercicis;
     private String path = "assets/images/prova1.jpg";
     private Boolean isFavourite;
 
@@ -31,6 +31,6 @@ public class RutinaResponseDTO {
         this.nom=rutina.getNomRutina();
         this.descripcio=rutina.getDescripcio();
         this.imagePath=rutina.getCodiImatge();
-        this.exercisis = rutina.getExercicis().stream().map(ObjectId::toString).collect(Collectors.toList());
+        this.exercicis=rutina.getExercicis().stream().map(ObjectId::toString).collect(Collectors.toList());
     }
 }

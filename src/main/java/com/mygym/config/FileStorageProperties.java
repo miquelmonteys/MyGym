@@ -10,6 +10,5 @@ import org.springframework.stereotype.Component;
 @Setter
 @ConfigurationProperties(prefix = "file")
 public class FileStorageProperties {
-    private String download;
-    private String googleapi;
+
 }

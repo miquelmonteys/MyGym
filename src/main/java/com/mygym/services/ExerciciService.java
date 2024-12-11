@@ -1,9 +1,13 @@
 package com.mygym.services;
 
 import com.mygym.models.Exercici;
+import com.mygym.models.Rutina;
 import com.mygym.models.Serie;
 import com.mygym.repository.ExerciciRepository;
 import java.util.List;
+import java.util.Optional;
+
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,6 +50,10 @@ public class ExerciciService {
             }
         });
         return exerciciRepository.save(exercici);
+    }
+
+    public Optional<Exercici> findByIdExercici(ObjectId id) {
+        return exerciciRepository.findById(id);
     }
 
     public List<Exercici> findByNom(String nomExercici) {

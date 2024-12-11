@@ -1,26 +1,29 @@
-import { Component } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {ExerciciService} from "../_services/exercici.service";
 
 @Component({
   selector: 'app-dialog-afegir-exercici',
   templateUrl: './dialog-afegir-exercici.component.html',
   styleUrl: './dialog-afegir-exercici.component.scss'
 })
-export class DialogAfegirExerciciComponent {
+export class DialogAfegirExerciciComponent{
   exerciciForm: FormGroup;
+  exercicis: any[] = [];
 
   constructor(
     private fb: FormBuilder,
-    public dialogRef: MatDialogRef<DialogAfegirExerciciComponent>
+    public dialogRef: MatDialogRef<DialogAfegirExerciciComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
+    this.exercicis = data.exercicis || [];
     this.exerciciForm = this.fb.group({
       exercici: ['', Validators.required],
-      series: ['', Validators.required],
       repeticions: ['', Validators.required],
-      descans: ['', Validators.required]
     });
   }
+
 
   onGuardar() {
     if (this.exerciciForm.valid) {

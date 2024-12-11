@@ -103,7 +103,4 @@ public class UserDetailsImpl implements UserDetails {
 		return Objects.equals(id, user.id);
 	}
 
-	public boolean hasRole(String role){
-		return !roles.stream().filter(searchingRole -> searchingRole.getName().toString().equals(role)).collect(Collectors.toList()).isEmpty();
-	}
 }

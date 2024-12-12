@@ -31,7 +31,6 @@ export class RoutineCardComponent implements OnInit {
 
     this.rutinaSerice.getRutina(this.routine.id).subscribe((res) => {
       this.exercicis = res['exercicis'] || [];
-      console.log(this.exercicis);
 
       const imagePromises = this.exercicis.map((exerciciId) =>
         this.exerciciService.getImatge(exerciciId).toPromise()

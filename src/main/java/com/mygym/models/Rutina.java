@@ -21,17 +21,13 @@ public class Rutina extends Auditable {
     @JsonSerialize(using = ToStringSerializer.class)
     @Id
     private ObjectId id;
-
     private String nomRutina;
     private String descripcio;
-    private List<ObjectId> exercicis; //Guardats per ID d'exercici
+    private List<ObjectId> exercicis;
     private List<Integer> series;
-    private String codiImatgeRutina; //nomRutina_1
-
+    private String codiImatgeRutina;
     private Double descans;
-
     private Double duracio;
-
     private Boolean isDefault;
 
     // Constructor sense paràmetres (necessari per a MongoDB i Spring Data)

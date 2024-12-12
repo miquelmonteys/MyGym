@@ -1,7 +1,7 @@
 .routine-card {
   display: flex;
   flex-direction: column;
-  height: 180px;
+  height: 100%;
   border-radius: 10px;
   margin-bottom: 10px;
   gap: 16px;
@@ -20,6 +20,7 @@
   display: flex;
   flex-wrap: wrap; /* Permite que las imágenes se ajusten si hay muchas */
   gap: 10px; /* Espacio entre las imágenes */
+  overflow-x: scroll;
 }
 
 .routine-image {
@@ -40,4 +41,11 @@
   justify-content: space-between;
   margin-right: 40px;
   margin-left: 40px;
+}
+
+.center-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }

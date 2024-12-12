@@ -10,7 +10,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface ExerciciRepository extends MongoRepository<Exercici, String> {
     List<Exercici> findByNom(String nom);
-    //Metodes per obtenir exercicis
 
     Optional<Exercici> findById(ObjectId id);
 }

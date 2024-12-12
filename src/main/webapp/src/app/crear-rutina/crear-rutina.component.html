@@ -3,10 +3,13 @@
 
     <h1>Crear rutina</h1>
 
-    <mat-form-field appearance="fill" class="nom">
-      <mat-label>Nom de la rutina</mat-label>
-      <input matInput [(ngModel)]="nomRutina" placeholder="Introdueix el nom de la rutina">
-    </mat-form-field>
+    <form [formGroup]="nomForm">
+      <mat-form-field appearance="fill" class="nom">
+        <mat-label>Nom de la rutina</mat-label>
+        <input formControlName="nom" matInput [(ngModel)]="nomRutina" placeholder="Introdueix el nom de la rutina">
+      </mat-form-field>
+    </form>
+
 
     <br>
     <button mat-raised-button color="primary" (click)="afegirExercici()">

@@ -30,6 +30,16 @@ public class ImageController {
     @Autowired
     private RutinaRepository rutinaRepository;
 
+    @GetMapping("/rutina/{id}")
+    public ResponseEntity<Resource> getRutinaImage(@PathVariable ObjectId id) {
+        Rutina rutina = rutinaRepository
+                .findById(id)
+                .stream()
+                .findFirst()
+                .orElse(null);
+        return getImageResponseEntity(rutina.getCodiImatge());
+    }
+
     @GetMapping("/exercici/{id}")
     public ResponseEntity<Resource> getExerciciImage(@PathVariable String id) {
         Exercici exercici = exerciciRepository
@@ -40,41 +50,25 @@ public class ImageController {
         return getImageResponseEntity(exercici.getCodiImatge());
     }
 
-    @GetMapping("/rutina/{id}")
-    public ResponseEntity<Resource> getRutinaImage(@PathVariable ObjectId id) {
-        Rutina rutina = rutinaRepository
-            .findById(id)
-            .stream()
-            .findFirst()
-            .orElse(null);
 
-        return getImageResponseEntity(rutina.getCodiImatge());
-    }
 
-    //FALTA VEURE BÉ COM RETORNAR LA IMATGE, SI NOMÉS AMB EL CODI EN TENIM PROU I ARREGLAR BÉ AQUESTES FUNCIONS
 
     private ResponseEntity<Resource> getImageResponseEntity(String codiImatge) {
         if (codiImatge == null) {
             return ResponseEntity.notFound().build();
         }
-
         try {
-            // Construïm el camí complet de la imatge
             Path imagePath = Paths.get(IMAGE_BASE_FOLDER + codiImatge + ".jpg");
-
-            // Creem el recurs URL per la imatge
             Resource resource = new UrlResource(imagePath.toUri());
-
-            // Verifiquem si el recurs existeix i és llegible
             if (resource.exists() && resource.isReadable()) {
                 return ResponseEntity.ok()
-                    .contentType(MediaType.IMAGE_JPEG) // Imatge tipus JPEG
+                    .contentType(MediaType.IMAGE_JPEG)
                     .body(resource);
             } else {
                 return ResponseEntity.notFound().build();
             }
         } catch (MalformedURLException e) {
-            return ResponseEntity.internalServerError().body(null); // Error en la URL
+            return ResponseEntity.internalServerError().body(null);
         }
     }
 }

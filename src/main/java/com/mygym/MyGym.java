@@ -63,7 +63,8 @@ public class MyGym {
 
     @Autowired
     HistoricRutinaRepository historicRutinaRepository;
-    //NO SE FINS ON ESTA BE
+
+
     @PostConstruct
     @Transactional
     public void init() {
@@ -74,12 +75,12 @@ public class MyGym {
         }
         if (rutinaRepository.findAll().isEmpty() && exerciciRepository.findAll().isEmpty()) {
             // Crear exercicis comuns per a les rutines
-            Exercici pressBanca = new Exercici(null, "Press Banca", "Treballa el pit", "Pit");
-            Exercici curlBiceps = new Exercici(null, "Curl Biceps", "Treballa els bíceps", "Braços");
-            Exercici pressEspatlles = new Exercici(null, "Press Espatlles", "Treballa les espatlles", "Espatlles");
-            Exercici pesMort = new Exercici(null, "Pes Mort", "Treballa l'esquena i les cames", "Esquena/Cames");
-            Exercici extensioQuadriceps = new Exercici(null, "Extensió Quadriceps", "Treballa els quàdriceps", "Cames");
-            Exercici squat = new Exercici(null, "Sentadeta", "Treballa les cames", "Cames");
+            Exercici pressBanca = new Exercici("Press Banca", "Treballa el pit", "Pit");
+            Exercici curlBiceps = new Exercici("Curl Biceps", "Treballa els bíceps", "Braços");
+            Exercici pressEspatlles = new Exercici("Press Espatlles", "Treballa les espatlles", "Espatlles");
+            Exercici pesMort = new Exercici("Pes Mort", "Treballa l'esquena i les cames", "Esquena/Cames");
+            Exercici extensioQuadriceps = new Exercici("Extensió Quadriceps", "Treballa els quàdriceps", "Cames");
+            Exercici squat = new Exercici("Sentadeta", "Treballa les cames", "Cames");
 
             exerciciRepository.saveAll(Arrays.asList(pressBanca, curlBiceps, pressEspatlles, pesMort, extensioQuadriceps, squat));
 

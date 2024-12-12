@@ -1,6 +1,5 @@
 package com.mygym.request;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -81,7 +81,7 @@ export class IniciarRutinaComponent implements OnInit {
     console.log('Rutina acabada:', this.exercicis);
     var infoExercici: {};
     var exercicisFinals: {
-      id: string,
+      exerciciId: string,
       series: number,
       descans: number[],
       pes: number[],
@@ -96,7 +96,7 @@ export class IniciarRutinaComponent implements OnInit {
       }
       exercicisFinals.push(
         {
-          id: this.exercicis[i].id,
+          exerciciId: this.exercicis[i].id,
           series: this.exercicis[i].series.length,
           descans: this.exercicis[i].descansos,
           pes: pes,

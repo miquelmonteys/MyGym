@@ -32,7 +32,6 @@ public class Exercici extends Auditable {
 
     // Constructor amb paràmetres
     public Exercici(
-        ObjectId id,
         String nom,
         String descripcio,
         String grupMuscular

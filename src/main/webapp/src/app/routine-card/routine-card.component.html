@@ -1,5 +1,6 @@
-@if(loading==0){
+
   <mat-card class="routine-card">
+    @if(loading==0){
     <mat-card-header class="cardTitle">
       <mat-card-title>{{ routine.nom }}</mat-card-title>
 
@@ -30,7 +31,11 @@
 
 
     </mat-card-content>
+    } @else {
+      <div class="center-spinner">
+        <mat-spinner></mat-spinner>
+
+      </div>
+    }
   </mat-card>
-} @else {
-  <mat-spinner></mat-spinner>
-}
+

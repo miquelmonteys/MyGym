@@ -7,6 +7,7 @@ import { Router } from "@angular/router";
 import { ExerciciService } from "../_services/exercici.service";
 import {RutinaModel} from "../models/rutina.model";
 import {RutinaService} from "../_services/rutina.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-crear-rutina',
@@ -15,12 +16,22 @@ import {RutinaService} from "../_services/rutina.service";
 })
 export class CrearRutinaComponent implements OnInit {
   nomRutina: string = '';
+  nomForm: FormGroup;
   exercicis: string[] = [];
   totsExercicis: Object = [];
   seriess: number[] = [];
   displayedColumns: string[] = ['exercici', 'series', 'opcions'];
   dataSource: { exercici: any, series: number }[] = [];
-  constructor(private dialog: MatDialog, private router: Router, private exerciciService: ExerciciService, private rutinaService: RutinaService) {}
+  constructor(private dialog: MatDialog,
+              private router: Router,
+              private exerciciService: ExerciciService,
+              private rutinaService: RutinaService,
+              private fb: FormBuilder,)
+  {
+    this.nomForm = this.fb.group({
+      nom: ['', Validators.required],
+    });
+  }
 
   ngOnInit() {
     this.exerciciService.getAllExercicis().subscribe({
@@ -103,13 +114,18 @@ export class CrearRutinaComponent implements OnInit {
 
   enviarRutina() {
 
-    const rutina: RutinaModel = {
-      nomRutina: this.nomRutina,
-      exercicis: this.exercicis,
-      series: this.seriess,
-    };
-    this.rutinaService.postRutina(rutina).subscribe();
-    this.tornarPrincipal();
+    if(this.nomForm.valid){
+      const rutina: RutinaModel = {
+        nomRutina: this.nomRutina,
+        exercicis: this.exercicis,
+        series: this.seriess,
+      };
+      this.rutinaService.postRutina(rutina).subscribe();
+      this.tornarPrincipal();
+    }
+    else this.nomForm.markAllAsTouched()
+
 
   }
+
 }

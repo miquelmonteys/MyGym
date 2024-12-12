@@ -24,6 +24,10 @@ public class User {
     @Size(max = 50)
     private String username;
 
+    private List<ObjectId> rutinesFavoritos = new ArrayList<>();
+
+    private List<ObjectId> rutinesPropies = new ArrayList<>();
+
     private String name;
 
     private String phoneNumber;
@@ -58,9 +62,7 @@ public class User {
 
     private boolean hasAccess = true;
 
-    private List<ObjectId> rutinesFavoritos = new ArrayList<>();
 
-    private List<ObjectId> rutinesPropies = new ArrayList<>();
 
     public User() {
     }

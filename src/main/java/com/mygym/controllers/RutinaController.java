@@ -44,16 +44,16 @@ public class RutinaController {
 
     @PutMapping("/{id}")
     public Rutina afegirExerciciARutina(
-        @PathVariable ObjectId id,
-        @RequestBody List<ObjectId> exercicis
+            @PathVariable ObjectId id,
+            @RequestBody List<ObjectId> exercicis
     ) {
         return rutinaService.afegirExercicisARutina(id, exercicis);
     }
 
     @PutMapping("/{id}/removeExercicis")
     public Rutina treureExercicisDeRutina(
-        @PathVariable ObjectId id,
-        @RequestBody List<String> exercicis
+            @PathVariable ObjectId id,
+            @RequestBody List<String> exercicis
     ) {
         return rutinaService.treureExercicisDeRutina(id, exercicis);
     }

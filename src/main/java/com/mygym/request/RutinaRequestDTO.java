@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 public class RutinaRequestDTO {
     private String nomRutina;
-    private List<ObjectId> exercicis; //Guardats per ID d'exercici
+    private List<ObjectId> exercicis;
     private List<Integer> series;
 
 

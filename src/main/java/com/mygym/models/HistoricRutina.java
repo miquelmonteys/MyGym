@@ -26,22 +26,14 @@ public class HistoricRutina extends Auditable {
     private ObjectId id;
 
     private Date data;
-    private List<ExerciciDetail> exercicis;
+    private List<ExerciciDetailComplet> exercicis;
 
-    // Constructor sense paràmetres
     public HistoricRutina() {
     }
 
-    // Constructor amb paràmetres
-    public HistoricRutina(ObjectId id, Date data, List<ExerciciDetail> exercicis) {
-        this.id = id;
-        this.data = data;
-        this.exercicis = exercicis;
-    }
-
-    public HistoricRutina(HistoricRutinaRequestDTO historic) {
+    public HistoricRutina(List<ExerciciDetailComplet> historic) {
         this.data = new Date();
-        this.exercicis = historic.getExercicis();
+        this.exercicis = historic;
     }
 
 }

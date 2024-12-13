@@ -1,5 +1,6 @@
 package com.mygym.services;
 
+import com.mygym.models.ExerciciDetailComplet;
 import com.mygym.models.HistoricRutina;
 import com.mygym.models.Rutina;
 import com.mygym.models.User;
@@ -18,13 +19,19 @@ import java.util.stream.Collectors;
 public class HistoricRutinaService {
     @Autowired
     private HistoricRutinaRepository historicRutinaRepository;
+    @Autowired
+    private ExerciciService exerciciService;
 
     public HistoricRutina creaHistoric(HistoricRutina historicRutina) {
         return historicRutinaRepository.save(historicRutina);
     }
 
     public HistoricRutina creaHistoric(HistoricRutinaRequestDTO historic) {
-        HistoricRutina r = new HistoricRutina(historic);
+        List<ExerciciDetailComplet> edc = historic.getExercicis().stream().map(exerciciDetail ->
+                new ExerciciDetailComplet(exerciciDetail,
+                        exerciciService.findByIdExercici(exerciciDetail.getExerciciId()))).collect(Collectors.toList());
+
+        HistoricRutina r = new HistoricRutina(edc);
         return historicRutinaRepository.save(r);
     }
 
